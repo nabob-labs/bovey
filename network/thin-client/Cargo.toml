@@ -1,0 +1,37 @@
+[package]
+name = "bovey-thin-client"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+log = { workspace = true }
+rayon = { workspace = true }
+bovey-account = { workspace = true }
+bovey-client-traits = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-commitment-config = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-epoch-info = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-message = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-system-interface = { workspace = true, features = ["bincode"] }
+bovey-transaction = { workspace = true }
+bovey-transaction-error = { workspace = true }
+
+[dev-dependencies]
+bovey-logger = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

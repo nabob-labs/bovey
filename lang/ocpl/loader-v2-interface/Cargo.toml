@@ -1,0 +1,28 @@
+[package]
+name = "bovey-loader-v2-interface"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+serde = { workspace = true, optional = true }
+serde_bytes = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-instruction = { workspace = true, features = ["bincode", "std"], optional = true }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+
+[features]
+bincode = ["dep:bovey-instruction", "serde"]
+serde = ["dep:serde", "dep:serde_bytes", "dep:serde_derive"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

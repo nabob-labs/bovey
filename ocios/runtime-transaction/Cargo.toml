@@ -1,0 +1,53 @@
+[package]
+name = "bovey-runtime-transaction"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bovey-transaction-view = { workspace = true }
+log = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-compute-budget-instruction = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-message = { workspace = true, features = ["blake3"] }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-vm-transaction = { workspace = true }
+bovey-transaction = { workspace = true }
+bovey-transaction-error = { workspace = true }
+thiserror = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_runtime_transaction"
+
+[dev-dependencies]
+bincode = { workspace = true }
+criterion = { workspace = true }
+rand = { workspace = true }
+bovey-compute-budget-instruction = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-compute-budget-interface = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-program = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["rand"] }
+bovey-reserved-account-keys = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-system-interface = { workspace = true, features = ["bincode"] }
+bovey-system-transaction = { workspace = true }
+bovey-transaction = { workspace = true, features = ["blake3"] }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dev-context-only-utils = ["bovey-compute-budget-instruction/dev-context-only-utils"]
+
+[lints]
+workspace = true

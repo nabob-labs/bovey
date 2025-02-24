@@ -1,0 +1,28 @@
+[package]
+name = "bovey-clock"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-sdk-ids = { workspace = true, optional = true }
+bovey-sdk-macro = { workspace = true }
+bovey-sysvar-id = { workspace = true, optional = true }
+
+[dev-dependencies]
+bovey-clock = { path = ".", features = ["sysvar"] }
+static_assertions = { workspace = true }
+
+[features]
+serde = ["dep:serde", "dep:serde_derive"]
+sysvar = ["dep:bovey-sdk-ids", "dep:bovey-sysvar-id"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]

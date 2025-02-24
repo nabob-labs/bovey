@@ -1,0 +1,39 @@
+[package]
+name = "ocp-token"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+no-entrypoint = []
+test-sbf = []
+
+[dependencies]
+arrayref = "0.3.9"
+bytemuck = "1.20.0"
+num-derive = "0.4"
+num-traits = "0.2"
+num_enum = "0.7.3"
+bovey-program = { workspace = true }
+thiserror = "2.0"
+
+[dev-dependencies]
+lazy_static = "1.5.0"
+proptest = "1.5"
+serial_test = "3.2.0"
+bovey-sdk = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[lints]
+workspace = true
+
+[package.metadata.bovey]
+program-id = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"

@@ -1,0 +1,32 @@
+[package]
+name = "bovey-offchain-message"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+num_enum = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-pubkey = { workspace = true, optional = true }
+bovey-sanitize = { workspace = true }
+bovey-sha256-hasher = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true }
+
+[dev-dependencies]
+bovey-keypair = { workspace = true }
+bovey-offchain-message = { path = ".", features = ["dev-context-only-utils"] }
+static_assertions = { workspace = true }
+
+[features]
+dev-context-only-utils = ["verify"]
+verify = ["dep:bovey-pubkey", "bovey-signature/verify"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]

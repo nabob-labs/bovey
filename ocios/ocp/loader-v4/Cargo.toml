@@ -1,0 +1,48 @@
+[package]
+name = "ocp-loader-v4-program"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+log = { workspace = true }
+qualifier_attr = { workspace = true }
+bovey-account = { workspace = true }
+bovey-bincode = { workspace = true }
+ocp-bpf-loader-program = { workspace = true, features = ["vm-internal"] }
+bovey-compute-budget = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-loader-v3-interface = { workspace = true }
+bovey-loader-v4-interface = { workspace = true, features = ["serde"] }
+bovey-log-collector = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-program-runtime = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-bpf = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-transaction-context = { workspace = true }
+bovey-type-overrides = { workspace = true }
+
+[dev-dependencies]
+bincode = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-sysvar = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "ocp_loader_v4_program"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+shuttle-test = [
+    "bovey-type-overrides/shuttle-test",
+    "bovey-program-runtime/shuttle-test",
+    "bovey-bpf/shuttle-test"
+]
+vm-internal = []

@@ -1,0 +1,22 @@
+[package]
+name = "bovey-vm-transaction"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bovey-hash = { workspace = true }
+bovey-message = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-transaction = { workspace = true }
+
+[dev-dependencies]
+bovey-message = { workspace = true, features = ["bincode"] }
+bovey-nonce = { workspace = true }
+bovey-system-interface = { workspace = true }
+static_assertions = { workspace = true }

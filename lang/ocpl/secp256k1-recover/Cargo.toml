@@ -1,0 +1,42 @@
+[package]
+name = "bovey-secp256k1-recover"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+borsh = { workspace = true, optional = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+thiserror = { workspace = true }
+
+[target.'cfg(target_os = "bovey")'.dependencies]
+bovey-define-syscall = { workspace = true }
+
+[target.'cfg(not(target_os = "bovey"))'.dependencies]
+libsecp256k1 = { workspace = true }
+
+[dev-dependencies]
+anyhow = { workspace = true }
+borsh = { workspace = true }
+bovey-program = { path = "../program" }
+
+[target.'cfg(not(target_os = "bovey"))'.dev-dependencies]
+libsecp256k1 = { workspace = true, features = ["hmac"] }
+
+[features]
+borsh = ["dep:borsh"]
+frozen-abi = ["dep:bovey-frozen-abi", "dep:bovey-frozen-abi-macro"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[lints]
+workspace = true

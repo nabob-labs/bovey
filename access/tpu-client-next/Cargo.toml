@@ -1,0 +1,40 @@
+[package]
+name = "bovey-tpu-client-next"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-trait = { workspace = true }
+log = { workspace = true }
+lru = { workspace = true }
+quinn = { workspace = true }
+rustls = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-quic-definitions = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-time-utils = { workspace = true }
+bovey-tls-utils = { workspace = true }
+bovey-tpu-client = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tokio-util = { workspace = true }
+
+[dev-dependencies]
+crossbeam-channel = { workspace = true }
+futures = { workspace = true }
+bovey-cli-config = { workspace = true }
+bovey-commitment-config = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-streamer = { workspace = true, features = ["dev-context-only-utils"] }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

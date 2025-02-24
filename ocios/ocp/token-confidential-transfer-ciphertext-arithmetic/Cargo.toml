@@ -1,0 +1,18 @@
+[package]
+name = "ocp-token-confidential-transfer-ciphertext-arithmetic"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+base64 = "0.22.1"
+bytemuck = "1.21.0"
+bovey-curve25519 = { workspace = true }
+bovey-zk-sdk = { workspace = true }
+
+[dev-dependencies]
+ocp-token-confidential-transfer-proof-generation = { workspace = true }
+curve25519-dalek = "4.1.3"

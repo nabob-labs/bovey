@@ -1,0 +1,64 @@
+[package]
+name = "bovey-genesis"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+base64 = { workspace = true }
+bincode = { workspace = true }
+clap = { workspace = true }
+itertools = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+bovey-account = { workspace = true }
+bovey-accounts-db = { workspace = true }
+bovey-clap-utils = { workspace = true }
+bovey-cli-config = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-commitment-config = { workspace = true }
+bovey-entry = { workspace = true }
+bovey-epoch-schedule = { workspace = true }
+bovey-feature-gate-interface = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-fee-calculator = { workspace = true }
+bovey-genesis-config = { workspace = true }
+bovey-inflation = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-ledger = { workspace = true }
+bovey-loader-v3-interface = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-native-token = { workspace = true }
+bovey-poh-config = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rent = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-stake-interface = { workspace = true }
+ocp-stake-program = { workspace = true }
+bovey-time-utils = { workspace = true }
+bovey-version = { workspace = true }
+ocp-vote-program = { workspace = true }
+tempfile = { workspace = true }
+
+[dev-dependencies]
+bovey-borsh = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["rand"] }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+
+[[bin]]
+name = "bovey-genesis"
+path = "src/main.rs"
+
+[lib]
+name = "bovey_genesis"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

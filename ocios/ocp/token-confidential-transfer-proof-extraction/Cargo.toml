@@ -1,0 +1,16 @@
+[package]
+name = "ocp-token-confidential-transfer-proof-extraction"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bytemuck = "1.21.0"
+bovey-curve25519 = { workspace = true }
+bovey-program = { workspace = true }
+bovey-zk-sdk = { workspace = true }
+ocp-pod = { workspace = true }
+thiserror = "2.0.11"

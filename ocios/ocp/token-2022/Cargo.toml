@@ -1,0 +1,64 @@
+[package]
+name = "ocp-token-2022"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+no-entrypoint = []
+test-sbf = []
+serde-traits = ["dep:serde", "dep:serde_with", "dep:base64", "ocp-pod/serde-traits"]
+default = ["zk-ops"]
+# Remove this feature once the underlying syscalls are released on all networks
+zk-ops = []
+
+[dependencies]
+arrayref = "0.3.9"
+bytemuck = { version = "1.21.0", features = ["derive"] }
+num-derive = "0.4"
+num-traits = "0.2"
+num_enum = "0.7.3"
+bovey-program = { workspace = true }
+bovey-security-txt = { workspace = true }
+bovey-zk-sdk = { workspace = true }
+ocp-elgamal-registry = { workspace = true, features = ["no-entrypoint"] }
+ocp-memo = { workspace = true, features = ["no-entrypoint"] }
+ocp-token = { workspace = true, features = ["no-entrypoint"] }
+ocp-token-confidential-transfer-ciphertext-arithmetic = { workspace = true }
+ocp-token-confidential-transfer-proof-extraction = { workspace = true }
+ocp-token-group-interface = { workspace = true }
+ocp-token-metadata-interface = { workspace = true }
+ocp-transfer-hook-interface = { workspace = true }
+ocp-type-length-value = { workspace = true }
+ocp-pod = { workspace = true }
+thiserror = "2.0"
+serde = { version = "1.0.218", optional = true }
+serde_with = { version = "3.12.0", optional = true }
+base64 = { version = "0.22.1", optional = true }
+
+[target.'cfg(not(target_os = "bovey"))'.dependencies]
+ocp-token-confidential-transfer-proof-generation = {  workspace = true }
+
+[dev-dependencies]
+lazy_static = "1.5.0"
+proptest = "1.6"
+serial_test = "3.2.0"
+bovey-program-test = { workspace = true }
+bovey-sdk = { workspace = true }
+ocp-tlv-account-resolution = { workspace = true }
+serde_json = "1.0.139"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[lints]
+workspace = true
+
+[package.metadata.bovey]
+program-id = "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"

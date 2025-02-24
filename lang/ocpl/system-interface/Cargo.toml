@@ -1,0 +1,57 @@
+[package]
+name = "bovey-system-interface"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu", "wasm32-unknown-unknown"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[dependencies]
+num-traits = "0.2"
+serde = { version = "1.0.210", optional = true }
+serde_derive = { version = "1.0.210", optional = true }
+bovey-decode-error = { workspace = true }
+bovey-frozen-abi = { workspace = true, features = ["frozen-abi"], optional = true }
+bovey-frozen-abi-macro = { workspace = true, features = ["frozen-abi"], optional = true }
+bovey-instruction = { workspace = true, features = ["bincode", "std"], optional = true }
+bovey-logger = { workspace = true, optional = true }
+bovey-pubkey = { workspace = true, default-features = false }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+js-sys = "0.3.72"
+wasm-bindgen = "0.2"
+
+[dev-dependencies]
+anyhow = "1.0.89"
+borsh = { version = "1.5.1", features = ["derive", "unstable__schema"] }
+bovey-account-info = { workspace = true }
+bovey-cpi = { workspace = true }
+bovey-nonce = { workspace = true }
+bovey-program = { workspace = true, default-features = false }
+bovey-program-entrypoint = { workspace = true }
+bovey-program-error = { workspace = true, features = ["borsh"] }
+bovey-pubkey = { workspace = true, features = ["std"] }
+bovey-system-interface = { path = ".", features = ["bincode"] }
+static_assertions = "1.1.0"
+strum = "0.24"
+strum_macros = "0.24"
+
+[features]
+bincode = ["dep:bovey-instruction", "serde"]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "dep:bovey-logger",
+    "bovey-pubkey/frozen-abi",
+    "bovey-pubkey/std"
+]
+serde = ["dep:serde", "dep:serde_derive", "bovey-pubkey/serde"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]

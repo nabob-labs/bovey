@@ -1,0 +1,46 @@
+[package]
+name = "bovey-transaction-context"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-account = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-pubkey = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[target.'cfg(not(target_os = "bovey"))'.dependencies]
+bincode = { workspace = true, optional = true }
+bovey-rent = { workspace = true }
+bovey-signature = { workspace = true, optional = true }
+
+[dev-dependencies]
+bovey-account-info = { workspace = true }
+bovey-system-interface = { workspace = true }
+bovey-transaction-context = { path = ".", features = [
+    "dev-context-only-utils",
+] }
+static_assertions = { workspace = true }
+
+[features]
+bincode = ["dep:bincode", "serde", "bovey-account/bincode"]
+debug-signature = ["dep:bovey-signature"]
+dev-context-only-utils = [
+    "bincode",
+    "debug-signature",
+    "bovey-account/dev-context-only-utils"
+]
+serde = ["dep:serde", "dep:serde_derive"]
+
+[lints]
+workspace = true

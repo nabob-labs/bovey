@@ -1,0 +1,46 @@
+[package]
+name = "ocp-system-program"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+log = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+bovey-account = { workspace = true }
+bovey-bincode = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-log-collector = { workspace = true }
+bovey-nonce = { workspace = true, features = ["serde"] }
+bovey-nonce-account = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-program-runtime = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["sha2"] }
+bovey-sdk-ids = { workspace = true }
+bovey-system-interface = { workspace = true, features = ["serde"] }
+bovey-sysvar = { workspace = true }
+bovey-transaction-context = { workspace = true, features = ["bincode"] }
+bovey-type-overrides = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+criterion = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-nonce-account = { workspace = true }
+bovey-rent = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-sha256-hasher = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "ocp_system_program"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

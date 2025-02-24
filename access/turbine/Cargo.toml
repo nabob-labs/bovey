@@ -1,0 +1,51 @@
+[package]
+name = "bovey-turbine"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+bytes = { workspace = true }
+crossbeam-channel = { workspace = true }
+futures = { workspace = true }
+itertools = { workspace = true }
+lazy-lru = { workspace = true }
+log = { workspace = true }
+lru = { workspace = true }
+quinn = { workspace = true }
+rand = { workspace = true }
+rand_chacha = { workspace = true }
+rayon = { workspace = true }
+rustls = { workspace = true }
+bovey-entry = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-geyser-plugin-manager = { workspace = true }
+bovey-gossip = { workspace = true }
+bovey-ledger = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-perf = { workspace = true }
+bovey-poh = { workspace = true }
+bovey-quic-client = { workspace = true }
+bovey-rayon-threadlimit = { workspace = true }
+bovey-rpc = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-tls-utils = { workspace = true }
+static_assertions = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+bs58 = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+test-case = { workspace = true }

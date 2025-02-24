@@ -1,0 +1,66 @@
+[package]
+name = "bovey-streamer"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-channel = { workspace = true }
+bytes = { workspace = true }
+crossbeam-channel = { workspace = true }
+dashmap = { workspace = true }
+futures = { workspace = true }
+futures-util = { workspace = true }
+governor = { workspace = true }
+histogram = { workspace = true }
+indexmap = { workspace = true }
+itertools = { workspace = true }
+libc = { workspace = true }
+log = { workspace = true }
+nix = { workspace = true, features = ["net"] }
+pem = { workspace = true }
+percentage = { workspace = true }
+quinn = { workspace = true }
+quinn-proto = { workspace = true }
+rand = { workspace = true }
+rustls = { workspace = true }
+smallvec = { workspace = true }
+socket2 = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-perf = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-quic-definitions = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-time-utils = { workspace = true }
+bovey-tls-utils = { workspace = true }
+bovey-transaction-error = { workspace = true }
+bovey-transaction-metrics-tracker = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+tokio-util = { workspace = true }
+x509-parser = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-net-utils = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-sdk = { workspace = true }
+bovey-streamer = { path = ".", features = ["dev-context-only-utils"] }
+
+[features]
+dev-context-only-utils = []
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_streamer"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

@@ -1,0 +1,22 @@
+[package]
+name = "bovey-genesis-utils"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+log = { workspace = true }
+bovey-accounts-db = { workspace = true }
+bovey-download-utils = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-sdk = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_genesis_utils"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

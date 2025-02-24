@@ -1,0 +1,46 @@
+[package]
+name = "bovey-dos"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+clap = { version = "3.1.5", features = ["derive", "cargo"] }
+crossbeam-channel = { workspace = true }
+itertools = { workspace = true }
+log = { workspace = true }
+rand = { workspace = true }
+serde = { workspace = true }
+bovey-bench-tps = { workspace = true }
+bovey-client = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-core = { workspace = true }
+bovey-faucet = { workspace = true }
+bovey-gossip = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-perf = { workspace = true }
+bovey-quic-client = { workspace = true }
+bovey-rpc = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-tps-client = { workspace = true }
+bovey-tpu-client = { workspace = true }
+bovey-version = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dev-dependencies]
+bovey-core = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-local-cluster = { workspace = true }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+
+[features]
+dev-context-only-utils = []

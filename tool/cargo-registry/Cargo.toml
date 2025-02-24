@@ -1,0 +1,44 @@
+[package]
+name = "bovey-cargo-registry"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+clap = { workspace = true }
+flate2 = { workspace = true }
+hex = { workspace = true }
+hyper = { workspace = true, features = ["full"] }
+log = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+serde_json = { workspace = true }
+sha2 = { workspace = true }
+bovey-clap-utils = { workspace = true }
+bovey-cli = { workspace = true }
+bovey-cli-config = { workspace = true }
+bovey-cli-output = { workspace = true }
+bovey-commitment-config = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-remote-wallet = { workspace = true, features = ["default"] }
+bovey-rpc-client = { workspace = true, features = ["default"] }
+bovey-rpc-client-api = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-version = { workspace = true }
+tar = { workspace = true }
+tempfile = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+toml = { workspace = true }
+
+[dev-dependencies]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dev-context-only-utils = []

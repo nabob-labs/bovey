@@ -1,0 +1,43 @@
+[package]
+name = "bovey-program-test"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+assert_matches = { workspace = true }
+async-trait = { workspace = true }
+base64 = { workspace = true }
+bincode = { workspace = true }
+chrono-humanize = { workspace = true }
+crossbeam-channel = { workspace = true }
+log = { workspace = true }
+serde = { workspace = true }
+bovey-accounts-db = { workspace = true }
+bovey-banks-client = { workspace = true }
+bovey-banks-interface = { workspace = true }
+bovey-banks-server = { workspace = true }
+ocp-bpf-loader-program = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-inline-ocp = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-log-collector = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-program-runtime = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-bpf = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-vm = { workspace = true }
+bovey-timings = { workspace = true }
+ocp-vote-program = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+
+[dev-dependencies]
+ocp-stake-program = { workspace = true }
+test-case = { workspace = true }

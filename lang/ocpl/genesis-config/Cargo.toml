@@ -1,0 +1,62 @@
+[package]
+name = "bovey-genesis-config"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+chrono = { workspace = true, features = ["alloc"] }
+memmap2 = { workspace = true }
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-account = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-cluster-type = { workspace = true }
+bovey-epoch-schedule = { workspace = true }
+bovey-fee-calculator = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true }
+bovey-frozen-abi-macro = { workspace = true, optional = true }
+bovey-hash = { workspace = true }
+bovey-inflation = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-native-token = { workspace = true }
+bovey-poh-config = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rent = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-sha256-hasher = { workspace = true }
+bovey-shred-version = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-time-utils = { workspace = true }
+
+[dev-dependencies]
+bovey-genesis-config = { path = ".", features = ["serde"] }
+bovey-pubkey = { workspace = true, features = ["rand"] }
+
+[features]
+frozen-abi = ["dep:bovey-frozen-abi", "dep:bovey-frozen-abi-macro"]
+serde = [
+    "dep:serde",
+    "dep:serde_derive",
+    "bovey-account/serde",
+    "bovey-clock/serde",
+    "bovey-cluster-type/serde",
+    "bovey-epoch-schedule/serde",
+    "bovey-fee-calculator/serde",
+    "bovey-inflation/serde",
+    "bovey-poh-config/serde",
+    "bovey-rent/serde",
+]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

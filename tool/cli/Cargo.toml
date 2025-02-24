@@ -1,0 +1,108 @@
+[package]
+name = "bovey-cli"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+bs58 = { workspace = true }
+clap = { workspace = true }
+console = { workspace = true }
+const_format = { workspace = true }
+criterion-stats = { workspace = true }
+crossbeam-channel = { workspace = true }
+ctrlc = { workspace = true, features = ["termination"] }
+hex = { workspace = true }
+humantime = { workspace = true }
+log = { workspace = true }
+num-traits = { workspace = true }
+pretty-hex = { workspace = true }
+reqwest = { workspace = true, features = ["blocking", "brotli", "deflate", "gzip", "rustls-tls", "json"] }
+semver = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+serde_json = { workspace = true }
+bovey-account = { workspace = true }
+bovey-account-decoder = { workspace = true }
+bovey-borsh = { workspace = true }
+ocp-bpf-loader-program = { workspace = true }
+bovey-clap-utils = { workspace = true }
+bovey-cli-config = { workspace = true }
+bovey-cli-output = { workspace = true }
+bovey-client = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-cluster-type = { workspace = true }
+bovey-commitment-config = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-compute-budget-interface = { workspace = true, features = ["borsh"] }
+ocp-config-program = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-decode-error = { workspace = true }
+bovey-epoch-schedule = { workspace = true }
+bovey-feature-gate-client = { workspace = true }
+bovey-feature-gate-interface = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-loader-v4-interface = { workspace = true }
+ocp-loader-v4-program = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-message = { workspace = true }
+bovey-native-token = { workspace = true }
+bovey-nonce = { workspace = true }
+bovey-offchain-message = { workspace = true, features = ["verify"] }
+bovey-packet = { workspace = true }
+bovey-program = { workspace = true }
+bovey-program-runtime = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-pubsub-client = { workspace = true }
+bovey-quic-client = { workspace = true }
+bovey-remote-wallet = { workspace = true, features = ["default"] }
+bovey-rent = { workspace = true }
+bovey-rpc-client = { workspace = true, features = ["default"] }
+bovey-rpc-client-api = { workspace = true }
+bovey-rpc-client-nonce-utils = { workspace = true, features = ["clap"] }
+bovey-bpf = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-slot-history = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-system-interface = { workspace = true, features = ["bincode"] }
+bovey-sysvar = { workspace = true }
+bovey-tps-client = { workspace = true }
+bovey-tpu-client = { workspace = true, features = ["default"] }
+bovey-transaction = { workspace = true }
+bovey-transaction-error = { workspace = true }
+bovey-transaction-status = { workspace = true }
+bovey-udp-client = { workspace = true }
+bovey-version = { workspace = true }
+ocp-vote-program = { workspace = true }
+ocp-memo = { workspace = true, features = ["no-entrypoint"] }
+thiserror = { workspace = true }
+tiny-bip39 = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+bovey-faucet = { workspace = true }
+bovey-nonce-account = { workspace = true }
+bovey-presigner = { workspace = true }
+bovey-rpc = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-sha256-hasher = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-test-validator = { workspace = true }
+tempfile = { workspace = true }
+test-case = { workspace = true }
+
+[[bin]]
+name = "bovey"
+path = "src/main.rs"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

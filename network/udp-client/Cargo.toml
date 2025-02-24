@@ -1,0 +1,22 @@
+[package]
+name = "bovey-udp-client"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-trait = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-transaction-error = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+
+[dev-dependencies]
+bovey-net-utils = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-packet = { workspace = true }

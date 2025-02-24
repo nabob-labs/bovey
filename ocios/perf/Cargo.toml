@@ -1,0 +1,85 @@
+[package]
+name = "bovey-perf"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+ahash = { workspace = true }
+bincode = { workspace = true }
+bv = { workspace = true, features = ["serde"] }
+curve25519-dalek = { workspace = true }
+dlopen2 = { workspace = true }
+fnv = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true }
+rand = { workspace = true }
+rayon = { workspace = true }
+serde = { workspace = true }
+bovey-clock = { workspace = true, optional = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-hash = { workspace = true }
+bovey-keypair = { workspace = true, optional = true }
+bovey-message = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-packet = { workspace = true, features = ["bincode"] }
+bovey-pubkey = { workspace = true }
+bovey-rayon-threadlimit = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-short-vec = { workspace = true }
+bovey-signature = { workspace = true, features = ["verify"] }
+bovey-signer = { workspace = true, optional = true }
+bovey-system-interface = { workspace = true, optional = true }
+bovey-system-transaction = { workspace = true, optional = true }
+bovey-time-utils = { workspace = true }
+bovey-transaction = { workspace = true, optional = true }
+bovey-vote = { workspace = true, optional = true }
+ocp-vote-program = { workspace = true, optional = true }
+
+[target."cfg(target_os = \"linux\")".dependencies]
+caps = { workspace = true }
+libc = { workspace = true }
+nix = { workspace = true, features = ["user"] }
+
+[lib]
+name = "bovey_perf"
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+rand_chacha = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-perf = { path = ".", features = ["dev-context-only-utils"] }
+test-case = { workspace = true }
+
+[features]
+dev-context-only-utils = [
+    "dep:bovey-clock",
+    "dep:bovey-keypair",
+    "dep:bovey-signer",
+    "dep:bovey-system-interface",
+    "dep:bovey-system-transaction",
+    "dep:bovey-transaction",
+    "dep:ocp-vote-program",
+    "dep:bovey-vote",
+]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-short-vec/frozen-abi",
+    "ocp-vote-program/frozen-abi",
+]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = ['cfg(build_target_feature_avx)', 'cfg(build_target_feature_avx2)']

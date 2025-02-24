@@ -1,0 +1,31 @@
+[package]
+name = "bovey-precompiles"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+lazy_static = { workspace = true }
+ocp-ed25519-program = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-message = { workspace = true }
+bovey-precompile-error = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+ocp-secp256k1-program = { workspace = true, features = ["bincode"] }
+ocp-secp256r1-program = { workspace = true, default-features = false }
+
+[features]
+# Enables the "vendored" feature of openssl inside of secp256r1-program
+openssl-vendored = ["ocp-secp256r1-program/openssl-vendored"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

@@ -1,0 +1,19 @@
+[package]
+name = "ocp-discriminator-derive"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+quote = "1.0"
+ocp-discriminator-syn = { workspace = true }
+syn = { version = "2.0", features = ["full"] }
+
+[lib]
+proc-macro = true
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

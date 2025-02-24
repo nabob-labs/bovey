@@ -1,0 +1,34 @@
+[package]
+name = "bovey-send-transaction-service"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-trait = { workspace = true }
+crossbeam-channel = { workspace = true }
+itertools = { workspace = true }
+log = { workspace = true }
+bovey-client = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-tpu-client-next = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+tokio-util = { workspace = true }
+
+[dev-dependencies]
+bovey-logger = { workspace = true }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+
+[features]
+dev-context-only-utils = []
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

@@ -1,0 +1,34 @@
+[package]
+name = "ocp-secp256r1-program"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bytemuck = { workspace = true, features = ["derive"] }
+bovey-feature-set = { workspace = true }
+bovey-precompile-error = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+
+[target.'cfg(all(not(target_arch = "wasm32"), not(target_os = "bovey")))'.dependencies]
+bovey-instruction = { workspace = true, features = ["std"] }
+openssl = { workspace = true }
+
+[dev-dependencies]
+bovey-logger = { workspace = true }
+bovey-sdk = { path = "../../sdk" }
+
+[features]
+default = []
+openssl-vendored = ["openssl/vendored"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

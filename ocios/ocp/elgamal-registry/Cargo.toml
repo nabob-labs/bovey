@@ -1,0 +1,31 @@
+[package]
+name = "ocp-elgamal-registry"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+no-entrypoint = []
+test-sbf = []
+
+[dependencies]
+bytemuck = { version = "1.21.0", features = ["derive"] }
+bovey-program = { workspace = true }
+bovey-zk-sdk = { workspace = true }
+ocp-pod = { workspace = true }
+ocp-token-confidential-transfer-proof-extraction = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[package.metadata.bovey]
+program-id = "regVYJW7tcT8zipN5YiBvHsvR5jXW1uLFxaHSbugABg"
+
+[lints]
+workspace = true

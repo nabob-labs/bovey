@@ -1,0 +1,21 @@
+[package]
+name = "bovey-nonce-account"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+bovey-account = { workspace = true, features = ["bincode"] }
+bovey-hash = { workspace = true }
+bovey-nonce = { workspace = true, features = ["serde"] }
+bovey-sdk-ids = { workspace = true }
+
+[dev-dependencies]
+bovey-fee-calculator = { workspace = true }
+bovey-pubkey = { workspace = true }

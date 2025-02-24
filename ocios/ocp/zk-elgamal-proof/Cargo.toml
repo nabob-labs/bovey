@@ -1,0 +1,18 @@
+[package]
+name = "ocp-zk-elgamal-proof-program"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bytemuck = { workspace = true }
+num-derive = { workspace = true }
+num-traits = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-log-collector = { workspace = true }
+bovey-program-runtime = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-zk-sdk = { workspace = true }

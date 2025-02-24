@@ -1,0 +1,31 @@
+[package]
+name = "bovey-banks-server"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+crossbeam-channel = { workspace = true }
+futures = { workspace = true }
+bovey-banks-interface = { workspace = true }
+bovey-client = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-runtime-transaction = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-send-transaction-service = { workspace = true }
+bovey-vm = { workspace = true }
+tarpc = { workspace = true, features = ["full"] }
+tokio = { workspace = true, features = ["full"] }
+tokio-serde = { workspace = true, features = ["bincode"] }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_banks_server"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

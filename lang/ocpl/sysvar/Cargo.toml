@@ -1,0 +1,86 @@
+[package]
+name = "bovey-sysvar"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bincode = { workspace = true, optional = true }
+bytemuck = { workspace = true, optional = true }
+bytemuck_derive = { workspace = true, optional = true }
+lazy_static = { workspace = true }
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-account-info = { workspace = true }
+bovey-clock = { workspace = true, features = ["sysvar"] }
+bovey-epoch-rewards = { workspace = true, features = ["sysvar"] }
+bovey-epoch-schedule = { workspace = true, features = ["sysvar"] }
+bovey-fee-calculator = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true }
+bovey-frozen-abi-macro = { workspace = true, optional = true }
+bovey-hash = { workspace = true, features = ["bytemuck"] }
+bovey-instruction = { workspace = true }
+bovey-instructions-sysvar = { workspace = true }
+bovey-last-restart-slot = { workspace = true, features = ["sysvar"] }
+bovey-program-entrypoint = { workspace = true }
+bovey-program-error = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rent = { workspace = true, features = ["sysvar"] }
+bovey-sanitize = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-sdk-macro = { workspace = true }
+bovey-slot-hashes = { workspace = true, features = ["sysvar"] }
+bovey-slot-history = { workspace = true, features = ["sysvar"] }
+bovey-stake-interface = { workspace = true }
+bovey-sysvar-id = { workspace = true }
+
+[target.'cfg(not(target_os = "bovey"))'.dependencies]
+base64 = { workspace = true }
+bovey-program-memory = { workspace = true }
+
+[target.'cfg(target_os = "bovey")'.dependencies]
+bovey-define-syscall = { workspace = true }
+
+[dev-dependencies]
+anyhow = { workspace = true }
+serial_test = { workspace = true }
+bovey-msg = { workspace = true }
+bovey-program = { path = "../program" }
+bovey-sdk = { path = "../sdk" }
+bovey-sha256-hasher = { workspace = true }
+bovey-sysvar = { path = ".", features = ["dev-context-only-utils"] }
+test-case = { workspace = true }
+
+[features]
+bincode = ["dep:bincode", "serde", "bovey-stake-interface/bincode"]
+bytemuck = ["dep:bytemuck", "dep:bytemuck_derive"]
+dev-context-only-utils = ["bincode", "bytemuck", "bovey-instructions-sysvar/dev-context-only-utils"]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-stake-interface/frozen-abi"
+]
+serde = [
+    "dep:serde",
+    "dep:serde_derive",
+    "bovey-clock/serde",
+    "bovey-epoch-rewards/serde",
+    "bovey-epoch-schedule/serde",
+    "bovey-fee-calculator/serde",
+    "bovey-last-restart-slot/serde",
+    "bovey-rent/serde",
+    "bovey-slot-hashes/serde",
+    "bovey-slot-history/serde",
+    "bovey-stake-interface/serde",
+]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

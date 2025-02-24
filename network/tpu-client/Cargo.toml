@@ -1,0 +1,49 @@
+[package]
+name = "bovey-tpu-client"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-trait = { workspace = true }
+bincode = { workspace = true }
+futures-util = { workspace = true }
+indexmap = { workspace = true }
+indicatif = { workspace = true, optional = true }
+log = { workspace = true }
+rayon = { workspace = true }
+bovey-client-traits = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-commitment-config = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-epoch-info = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-message = { workspace = true, optional = true }
+bovey-net-utils = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-pubsub-client = { workspace = true }
+bovey-quic-definitions = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-transaction = { workspace = true }
+bovey-transaction-error = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+
+[features]
+default = ["spinner"]
+# Support tpu-client methods that feature a spinner progress bar for
+# command-line interfaces
+spinner = [
+    "dep:indicatif",
+    "dep:bovey-message",
+    "bovey-rpc-client/spinner"
+]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

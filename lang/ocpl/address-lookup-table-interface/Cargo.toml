@@ -1,0 +1,54 @@
+[package]
+name = "bovey-address-lookup-table-interface"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bincode = { workspace = true, optional = true }
+bytemuck = { workspace = true, optional = true }
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-clock = { workspace = true }
+bovey-frozen-abi = { workspace = true, features = [
+    "frozen-abi",
+], optional = true }
+bovey-frozen-abi-macro = { workspace = true, features = [
+    "frozen-abi",
+], optional = true }
+bovey-instruction = { workspace = true, features = ["std"], optional = true }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-slot-hashes = { workspace = true }
+
+[target.'cfg(not(target_os = "bovey"))'.dependencies]
+bovey-pubkey = { workspace = true, features = ["curve25519"] }
+
+[dev-dependencies]
+bovey-address-lookup-table-interface = { path = ".", features = [
+    "dev-context-only-utils",
+] }
+bovey-hash = { workspace = true }
+
+[features]
+bincode = [
+    "dep:bincode",
+    "dep:bovey-instruction",
+    "serde",
+    "bovey-instruction/bincode",
+]
+bytemuck = ["dep:bytemuck", "bovey-pubkey/bytemuck"]
+dev-context-only-utils = ["bincode", "bytemuck"]
+frozen-abi = ["dep:bovey-frozen-abi", "dep:bovey-frozen-abi-macro", "serde"]
+serde = ["dep:serde", "dep:serde_derive", "bovey-pubkey/serde"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

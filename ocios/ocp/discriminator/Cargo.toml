@@ -1,0 +1,27 @@
+[package]
+name = "ocp-discriminator"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+borsh = ["dep:borsh"]
+
+[dependencies]
+borsh = { version = "1", optional = true, features = ["derive"] }
+bytemuck = { version = "1.21.0", features = ["derive"] }
+bovey-program-error = { workspace = true }
+bovey-sha256-hasher = { workspace = true }
+ocp-discriminator-derive = { workspace = true }
+
+[dev-dependencies]
+ocp-discriminator = { path = ".", features = ["borsh"] }
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

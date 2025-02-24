@@ -1,0 +1,43 @@
+[package]
+name = "bovey-clap-utils"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+chrono = { workspace = true, features = ["default"] }
+clap = "2.33.0"
+rpassword = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-cluster-type = { workspace = true }
+bovey-commitment-config = { workspace = true }
+bovey-derivation-path = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-keypair = { workspace = true, features = ["seed-derivable"] }
+bovey-message = { workspace = true }
+bovey-native-token = { workspace = true }
+bovey-presigner = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-remote-wallet = { workspace = true, features = ["default"] }
+bovey-seed-phrase = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true }
+thiserror = { workspace = true }
+tiny-bip39 = { workspace = true }
+uriparse = { workspace = true }
+url = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["rand"] }
+bovey-system-interface = { workspace = true, features = ["bincode"] }
+tempfile = { workspace = true }
+
+[lib]
+name = "bovey_clap_utils"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

@@ -1,0 +1,23 @@
+[package]
+name = "bovey-compute-budget"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+qualifier_attr = { workspace = true, optional = true }
+bovey-fee-structure = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-program-entrypoint = { workspace = true }
+
+[features]
+dev-context-only-utils = ["dep:qualifier_attr"]
+frozen-abi = ["dep:bovey-frozen-abi", "bovey-fee-structure/frozen-abi"]
+
+[lints]
+workspace = true

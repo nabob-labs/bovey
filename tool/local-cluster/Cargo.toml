@@ -1,0 +1,58 @@
+[package]
+name = "bovey-local-cluster"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+crossbeam-channel = { workspace = true }
+itertools = { workspace = true }
+log = { workspace = true }
+rand = { workspace = true }
+rayon = { workspace = true }
+bovey-accounts-db = { workspace = true }
+bovey-client = { workspace = true }
+ocp-config-program = { workspace = true }
+bovey-core = { workspace = true }
+bovey-entry = { workspace = true }
+bovey-gossip = { workspace = true }
+bovey-ledger = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-pubsub-client = { workspace = true }
+bovey-quic-client = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-sdk = { workspace = true }
+ocp-stake-program = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-thin-client = { workspace = true }
+bovey-tpu-client = { workspace = true }
+bovey-turbine = { workspace = true }
+bovey-vote = { workspace = true }
+ocp-vote-program = { workspace = true }
+static_assertions = { workspace = true }
+strum = { workspace = true, features = ["derive"] }
+tempfile = { workspace = true }
+trees = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+fs_extra = { workspace = true }
+gag = { workspace = true }
+serial_test = { workspace = true }
+bovey-core = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-download-utils = { workspace = true }
+bovey-ledger = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-local-cluster = { path = ".", features = ["dev-context-only-utils"] }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dev-context-only-utils = []

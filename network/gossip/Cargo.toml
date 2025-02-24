@@ -1,0 +1,98 @@
+[package]
+name = "bovey-gossip"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+assert_matches = { workspace = true }
+bincode = { workspace = true }
+bv = { workspace = true, features = ["serde"] }
+clap = { workspace = true }
+crossbeam-channel = { workspace = true }
+flate2 = { workspace = true }
+indexmap = { workspace = true, features = ["rayon"] }
+itertools = { workspace = true }
+log = { workspace = true }
+lru = { workspace = true }
+num-traits = { workspace = true }
+rand = { workspace = true }
+rand_chacha = { workspace = true }
+rayon = { workspace = true }
+serde = { workspace = true }
+serde-big-array = { workspace = true }
+serde_bytes = { workspace = true }
+serde_derive = { workspace = true }
+siphasher = { workspace = true }
+bovey-bloom = { workspace = true }
+bovey-clap-utils = { workspace = true }
+bovey-client = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-entry = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-ledger = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-perf = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rayon-threadlimit = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-sanitize = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-serde-varint = { workspace = true }
+bovey-short-vec = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-tpu-client = { workspace = true }
+bovey-version = { workspace = true }
+bovey-vote = { workspace = true }
+ocp-vote-program = { workspace = true }
+static_assertions = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+bs58 = { workspace = true }
+criterion = { workspace = true }
+num_cpus = { workspace = true }
+rand0-7 = { workspace = true }
+rand_chacha0-2 = { workspace = true }
+serial_test = { workspace = true }
+bovey-perf = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+test-case = { workspace = true }
+
+[features]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-bloom/frozen-abi",
+    "bovey-ledger/frozen-abi",
+    "bovey-perf/frozen-abi",
+    "bovey-runtime/frozen-abi",
+    "bovey-sdk/frozen-abi",
+    "bovey-short-vec/frozen-abi",
+    "bovey-version/frozen-abi",
+    "bovey-vote/frozen-abi",
+    "ocp-vote-program/frozen-abi",
+]
+
+[[bin]]
+name = "bovey-gossip"
+path = "src/main.rs"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[lints]
+workspace = true

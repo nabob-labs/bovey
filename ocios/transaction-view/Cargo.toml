@@ -1,0 +1,34 @@
+[package]
+name = "bovey-transaction-view"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bovey-hash = { workspace = true }
+bovey-message = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-short-vec = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-vm-transaction = { workspace = true }
+
+[dev-dependencies]
+# See order-crates-for-publishing.py for using this unusual `path = "."`
+bovey-transaction-view = { path = ".", features = ["dev-context-only-utils"] }
+bincode = { workspace = true }
+criterion = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-message = { workspace = true, features = ["serde"] }
+bovey-signature = { workspace = true, features = ["serde"] }
+bovey-signer = { workspace = true }
+bovey-system-interface = { workspace = true, features = ["bincode"] }
+bovey-transaction = { workspace = true, features = ["bincode"] }
+
+[features]
+dev-context-only-utils = []

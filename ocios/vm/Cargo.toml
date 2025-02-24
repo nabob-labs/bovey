@@ -1,0 +1,119 @@
+[package]
+name = "bovey-vm"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+ahash = { workspace = true }
+itertools = { workspace = true }
+log = { workspace = true }
+percentage = { workspace = true }
+qualifier_attr = { workspace = true, optional = true }
+serde = { workspace = true, features = ["rc"] }
+serde_derive = { workspace = true }
+bovey-account = { workspace = true }
+ocp-bpf-loader-program = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-fee-structure = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-instructions-sysvar = { workspace = true }
+ocp-loader-v4-program = { workspace = true }
+bovey-log-collector = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-message = { workspace = true }
+bovey-nonce = { workspace = true }
+bovey-nonce-account = { workspace = true }
+bovey-precompiles = { workspace = true }
+bovey-program = { workspace = true }
+bovey-program-runtime = { workspace = true, features = ["metrics"] }
+bovey-pubkey = { workspace = true }
+bovey-rent = { workspace = true }
+bovey-rent-debits = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-vm-rent-collector = { workspace = true }
+bovey-vm-transaction = { workspace = true }
+bovey-timings = { workspace = true }
+bovey-transaction-context = { workspace = true }
+bovey-transaction-error = { workspace = true }
+bovey-type-overrides = { workspace = true }
+thiserror = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_vm"
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+bincode = { workspace = true }
+ed25519-dalek = { workspace = true }
+lazy_static = { workspace = true }
+libsecp256k1 = { workspace = true }
+openssl = { workspace = true }
+prost = { workspace = true }
+rand0-7 = { workspace = true }
+shuttle = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-compute-budget = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-compute-budget-instruction = { workspace = true }
+bovey-compute-budget-interface = { workspace = true }
+ocp-compute-budget-program = { workspace = true }
+ocp-ed25519-program = { workspace = true }
+bovey-epoch-schedule = { workspace = true }
+bovey-fee-calculator = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-native-token = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rent = { workspace = true }
+bovey-reserved-account-keys = { workspace = true }
+bovey-bpf = { workspace = true }
+bovey-sdk = { workspace = true, features = ["dev-context-only-utils"] }
+ocp-secp256k1-program = { workspace = true }
+ocp-secp256r1-program = { workspace = true, features = ["openssl-vendored"] }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true }
+# See order-crates-for-publishing.py for using this unusual `path = "."`
+bovey-vm = { path = ".", features = ["dev-context-only-utils", "vm-internal"] }
+bovey-vm-conformance = { workspace = true }
+ocp-system-program = { workspace = true }
+bovey-system-transaction = { workspace = true }
+bovey-sysvar = { workspace = true }
+bovey-transaction = { workspace = true }
+test-case = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dev-context-only-utils = ["dep:qualifier_attr"]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-compute-budget/frozen-abi",
+    "bovey-program-runtime/frozen-abi",
+    "bovey-sdk/frozen-abi",
+]
+shuttle-test = [
+    "bovey-type-overrides/shuttle-test",
+    "bovey-program-runtime/shuttle-test",
+    "ocp-bpf-loader-program/shuttle-test",
+    "ocp-loader-v4-program/shuttle-test",
+]
+vm-internal = []
+
+[lints]
+workspace = true

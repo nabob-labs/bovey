@@ -1,0 +1,33 @@
+[package]
+name = "ocp-instruction-padding"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+no-entrypoint = []
+test-sbf = []
+
+[dependencies]
+num_enum = "0.7.3"
+bovey-account-info = { workspace = true }
+bovey-cpi = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-program-entrypoint = { workspace = true }
+bovey-program-error = { workspace = true }
+bovey-pubkey = { workspace = true }
+
+[dev-dependencies]
+bovey-program = { workspace = true }
+bovey-program-test = { workspace = true }
+bovey-sdk = { workspace = true }
+static_assertions = "1.1.0"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

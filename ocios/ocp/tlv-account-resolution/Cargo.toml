@@ -1,0 +1,42 @@
+[package]
+name = "ocp-tlv-account-resolution"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+serde-traits = ["dep:serde"]
+test-sbf = []
+
+[dependencies]
+bytemuck = { version = "1.21.0", features = ["derive"] }
+num-derive = "0.4"
+num-traits = "0.2"
+serde = { version = "1.0.217", optional = true }
+bovey-account-info = { workspace = true }
+bovey-decode-error = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-program-error = { workspace = true }
+bovey-msg = { workspace = true }
+bovey-pubkey = { workspace = true }
+ocp-discriminator = { workspace = true }
+ocp-program-error = { workspace = true }
+ocp-pod = { workspace = true }
+ocp-type-length-value = { workspace = true }
+thiserror = "2.0"
+
+[dev-dependencies]
+futures = "0.3.31"
+futures-util = "0.3"
+bovey-client = { workspace = true }
+bovey-program-test = { workspace = true }
+bovey-sdk = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

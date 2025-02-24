@@ -1,0 +1,128 @@
+[package]
+name = "bovey-accounts-db"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+ahash = { workspace = true }
+bincode = { workspace = true }
+blake3 = { workspace = true }
+bv = { workspace = true, features = ["serde"] }
+bytemuck = { workspace = true }
+bytemuck_derive = { workspace = true }
+bzip2 = { workspace = true }
+crossbeam-channel = { workspace = true }
+dashmap = { workspace = true, features = ["rayon", "raw-api"] }
+indexmap = { workspace = true }
+itertools = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true }
+lz4 = { workspace = true }
+memmap2 = { workspace = true }
+modular-bitfield = { workspace = true }
+num_cpus = { workspace = true }
+num_enum = { workspace = true }
+qualifier_attr = { workspace = true, optional = true }
+rand = { workspace = true }
+rayon = { workspace = true }
+seqlock = { workspace = true }
+serde = { workspace = true, features = ["rc"] }
+serde_derive = { workspace = true }
+smallvec = { workspace = true, features = ["const_generics"] }
+bovey-account = { workspace = true, features = ["serde"] }
+bovey-address-lookup-table-interface = { workspace = true, features = [
+    "bincode",
+    "bytemuck",
+] }
+bovey-bucket-map = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-epoch-schedule = { workspace = true }
+bovey-fee-calculator = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-genesis-config = { workspace = true, features = ["serde"] }
+bovey-hash = { workspace = true, features = ["serde"] }
+bovey-inline-ocp = { workspace = true }
+bovey-keypair = { workspace = true, optional = true }
+bovey-lattice-hash = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-message = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-nohash-hasher = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rayon-threadlimit = { workspace = true }
+bovey-rent = { workspace = true, optional = true }
+bovey-rent-collector = { workspace = true }
+bovey-reward-info = { workspace = true, features = ["serde"] }
+bovey-sha256-hasher = { workspace = true }
+bovey-signer = { workspace = true, optional = true }
+bovey-slot-hashes = { workspace = true }
+ocp-stake-program = { workspace = true, optional = true }
+bovey-vm-transaction = { workspace = true }
+bovey-system-interface = { workspace = true }
+bovey-sysvar = { workspace = true }
+bovey-time-utils = { workspace = true }
+bovey-transaction = { workspace = true }
+bovey-transaction-context = { workspace = true }
+bovey-transaction-error = { workspace = true }
+ocp-vote-program = { workspace = true, optional = true }
+static_assertions = { workspace = true }
+tar = { workspace = true }
+tempfile = { workspace = true }
+thiserror = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_accounts_db"
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+criterion = { workspace = true }
+libsecp256k1 = { workspace = true }
+memoffset = { workspace = true }
+rand_chacha = { workspace = true }
+serde_bytes = { workspace = true }
+# See order-crates-for-publishing.py for using this unusual `path = "."`
+bovey-accounts-db = { path = ".", features = ["dev-context-only-utils"] }
+bovey-compute-budget = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-slot-history = { workspace = true }
+static_assertions = { workspace = true }
+strum = { workspace = true, features = ["derive"] }
+strum_macros = { workspace = true }
+test-case = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dev-context-only-utils = [
+    "dep:qualifier_attr",
+    "dep:bovey-keypair",
+    "dep:bovey-rent",
+    "dep:bovey-signer",
+    "dep:ocp-stake-program",
+    "dep:ocp-vote-program",
+    "bovey-account/dev-context-only-utils",
+    "bovey-pubkey/rand",
+    "bovey-transaction/dev-context-only-utils",
+]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-fee-calculator/frozen-abi",
+    "ocp-vote-program/frozen-abi",
+]
+
+[lints]
+workspace = true

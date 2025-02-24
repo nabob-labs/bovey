@@ -1,0 +1,22 @@
+[package]
+name = "bovey-unified-scheduler-logic"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+assert_matches = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-runtime-transaction = { workspace = true }
+bovey-transaction = { workspace = true }
+static_assertions = { workspace = true }
+
+[dev-dependencies]
+bovey-instruction = { workspace = true }
+bovey-message = { workspace = true }
+bovey-runtime-transaction = { workspace = true, features = [
+    "dev-context-only-utils",
+] }

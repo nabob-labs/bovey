@@ -1,0 +1,40 @@
+[package]
+name = "bovey-tokens"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+chrono = { workspace = true, features = ["default", "serde"] }
+clap = "2.33.0"
+console = { workspace = true }
+csv = { workspace = true }
+ctrlc = { workspace = true, features = ["termination"] }
+indexmap = { workspace = true }
+indicatif = { workspace = true }
+pickledb = { workspace = true, features = ["yaml"] }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+bovey-account-decoder = { workspace = true }
+bovey-clap-utils = { workspace = true }
+bovey-cli-config = { workspace = true }
+bovey-remote-wallet = { workspace = true, features = ["default"] }
+bovey-rpc-client = { workspace = true, features = ["default"] }
+bovey-rpc-client-api = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-transaction-status = { workspace = true }
+bovey-version = { workspace = true }
+ocp-associated-token-account = { workspace = true }
+ocp-token = { workspace = true, features = ["no-entrypoint"] }
+tempfile = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+bincode = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-test-validator = { workspace = true }

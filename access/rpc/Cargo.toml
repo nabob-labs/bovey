@@ -1,0 +1,89 @@
+[package]
+name = "bovey-rpc"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+base64 = { workspace = true }
+bincode = { workspace = true }
+bs58 = { workspace = true }
+crossbeam-channel = { workspace = true }
+dashmap = { workspace = true }
+itertools = { workspace = true }
+jsonrpc-core = { workspace = true }
+jsonrpc-core-client = { workspace = true }
+jsonrpc-derive = { workspace = true }
+jsonrpc-http-server = { workspace = true }
+jsonrpc-pubsub = { workspace = true }
+libc = { workspace = true }
+log = { workspace = true }
+rayon = { workspace = true }
+regex = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+serde_json = { workspace = true }
+soketto = { workspace = true }
+bovey-account-decoder = { workspace = true }
+bovey-accounts-db = { workspace = true }
+bovey-client = { workspace = true }
+bovey-entry = { workspace = true }
+bovey-faucet = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-gossip = { workspace = true }
+bovey-inline-ocp = { workspace = true }
+bovey-ledger = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-perf = { workspace = true }
+bovey-poh = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rayon-threadlimit = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-runtime-transaction = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-send-transaction-service = { workspace = true }
+ocp-stake-program = { workspace = true }
+bovey-storage-bigtable = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-vm = { workspace = true }
+bovey-tpu-client = { workspace = true }
+bovey-transaction-status = { workspace = true }
+bovey-version = { workspace = true }
+bovey-vote = { workspace = true }
+ocp-vote-program = { workspace = true }
+ocp-token = { workspace = true, features = ["no-entrypoint"] }
+ocp-token-2022 = { workspace = true, features = ["no-entrypoint"] }
+stream-cancel = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+tokio-util = { workspace = true, features = ["codec", "compat"] }
+
+[dev-dependencies]
+serial_test = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-rpc = { path = ".", features = ["dev-context-only-utils"] }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-runtime-transaction = { workspace = true, features = [
+    "dev-context-only-utils",
+] }
+ocp-stake-program = { workspace = true }
+ocp-pod = { workspace = true }
+symlink = { workspace = true }
+test-case = { workspace = true }
+
+[features]
+dev-context-only-utils = [
+    "bovey-rpc/dev-context-only-utils",
+]
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_rpc"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

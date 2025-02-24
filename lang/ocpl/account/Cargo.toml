@@ -1,0 +1,53 @@
+[package]
+name = "bovey-account"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bincode = { workspace = true, optional = true }
+qualifier_attr = { workspace = true, optional = true }
+serde = { workspace = true, optional = true }
+serde_bytes = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-account-info = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true }
+bovey-frozen-abi-macro = { workspace = true, optional = true }
+bovey-instruction = { workspace = true }
+bovey-logger = { workspace = true, optional = true }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-sysvar = { workspace = true, features = ["bincode"], optional = true }
+
+[dev-dependencies]
+bovey-account = { path = ".", features = ["dev-context-only-utils"] }
+
+[features]
+bincode = [
+    "dep:bincode",
+    "dep:bovey-sysvar",
+    "bovey-instruction/serde",
+    "serde",
+]
+dev-context-only-utils = ["bincode", "dep:qualifier_attr"]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "dep:bovey-logger",
+    "bovey-pubkey/frozen-abi",
+]
+serde = [
+    "dep:serde",
+    "dep:serde_bytes",
+    "dep:serde_derive",
+    "bovey-pubkey/serde",
+]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]

@@ -1,0 +1,35 @@
+[package]
+name = "bovey-nonce"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-fee-calculator = { workspace = true }
+bovey-hash = { workspace = true, default-features = false }
+bovey-pubkey = { workspace = true, default-features = false }
+bovey-sha256-hasher = { workspace = true }
+
+[dev-dependencies]
+bincode = { workspace = true }
+bovey-nonce = { path = ".", features = ["dev-context-only-utils"] }
+
+[features]
+dev-context-only-utils = ["serde"]
+serde = [
+    "dep:serde",
+    "dep:serde_derive",
+    "bovey-fee-calculator/serde",
+    "bovey-hash/serde",
+    "bovey-pubkey/serde",
+]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]

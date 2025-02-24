@@ -1,0 +1,157 @@
+[package]
+name = "bovey-program"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+blake3 = { workspace = true, features = ["traits-preview"] }
+borsh = { workspace = true, optional = true }
+borsh0-10 = { workspace = true, optional = true }
+bs58 = { workspace = true, features = ["alloc"] }
+bytemuck = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true }
+memoffset = { workspace = true }
+num-derive = { workspace = true }
+num-traits = { workspace = true, features = ["i128"] }
+serde = { workspace = true }
+serde_bytes = { workspace = true }
+serde_derive = { workspace = true }
+bovey-account-info = { workspace = true, features = ["bincode"] }
+bovey-address-lookup-table-interface = { workspace = true, features = ["bincode", "bytemuck"] }
+bovey-atomic-u64 = { workspace = true }
+bovey-big-mod-exp = { workspace = true }
+bovey-bincode = { workspace = true }
+bovey-blake3-hasher = { workspace = true, features = ["blake3"] }
+bovey-borsh = { workspace = true, optional = true }
+bovey-clock = { workspace = true, features = ["serde", "sysvar"] }
+bovey-cpi = { workspace = true }
+bovey-decode-error = { workspace = true }
+bovey-epoch-rewards = { workspace = true, features = ["serde", "sysvar"] }
+bovey-epoch-schedule = { workspace = true, features = ["serde", "sysvar"] }
+bovey-feature-gate-interface = { workspace = true, features = ["bincode"] }
+bovey-fee-calculator = { workspace = true, features = ["serde"] }
+bovey-frozen-abi = { workspace = true, optional = true, features = ["frozen-abi"] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = ["frozen-abi"] }
+bovey-hash = { workspace = true, features = [
+    "bytemuck",
+    "serde",
+    "std",
+] }
+bovey-instruction = { workspace = true, default-features = false, features = [
+    "bincode",
+    "serde",
+    "std",
+] }
+bovey-instructions-sysvar = { workspace = true }
+bovey-keccak-hasher = { workspace = true, features = ["sha3"] }
+bovey-last-restart-slot = { workspace = true, features = ["serde", "sysvar"] }
+bovey-loader-v2-interface = { workspace = true, features = ["bincode"] }
+bovey-loader-v3-interface = { workspace = true, features = ["bincode"] }
+bovey-loader-v4-interface = { workspace = true, features = ["bincode"] }
+bovey-message = { workspace = true, features = ["bincode", "blake3"] }
+bovey-msg = { workspace = true }
+bovey-native-token = { workspace = true }
+bovey-nonce = { workspace = true, features = ["serde"] }
+bovey-program-entrypoint = { workspace = true }
+bovey-program-error = { workspace = true, features = ["serde"] }
+bovey-program-memory = { workspace = true }
+bovey-program-option = { workspace = true }
+bovey-program-pack = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["bytemuck", "curve25519", "serde", "std"] }
+bovey-rent = { workspace = true, features = ["serde", "sysvar"] }
+bovey-sanitize = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-sdk-macro = { workspace = true }
+bovey-secp256k1-recover = { workspace = true }
+bovey-serde-varint = { workspace = true }
+bovey-serialize-utils = { workspace = true }
+bovey-sha256-hasher = { workspace = true, features = ["sha2"] }
+bovey-short-vec = { workspace = true }
+bovey-slot-hashes = { workspace = true, features = ["serde", "sysvar"] }
+bovey-slot-history = { workspace = true, features = ["serde", "sysvar"] }
+bovey-stable-layout = { workspace = true }
+bovey-stake-interface = { workspace = true, features = ["bincode"] }
+bovey-system-interface = { workspace = true, features = ["bincode"] }
+bovey-sysvar = { workspace = true, features = ["bincode", "bytemuck"] }
+bovey-sysvar-id = { workspace = true }
+bovey-vote-interface = { workspace = true, features = ["bincode"] }
+thiserror = { workspace = true }
+
+# This is currently needed to build on-chain programs reliably.
+# Borsh 0.10 may pull in hashbrown 0.13, which uses ahash 0.8, which uses
+# getrandom 0.2 underneath. This explicit dependency allows for no-std if cargo
+# upgrades Borsh's dependency to hashbrown 0.13.
+# Remove this once borsh 0.11 or 1.0 is released, which correctly declares the
+# hashbrown dependency as optional.
+[target.'cfg(target_os = "bovey")'.dependencies]
+getrandom = { workspace = true, features = ["custom"] }
+bovey-define-syscall = { workspace = true }
+
+[target.'cfg(not(target_os = "bovey"))'.dependencies]
+num-bigint = { workspace = true }
+rand = { workspace = true }
+bovey-example-mocks = { workspace = true }
+
+[target.'cfg(not(target_os = "bovey"))'.dev-dependencies]
+arbitrary = { workspace = true, features = ["derive"] }
+bovey-logger = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+console_error_panic_hook = { workspace = true }
+console_log = { workspace = true }
+getrandom = { workspace = true, features = ["js", "wasm-bindgen"] }
+wasm-bindgen = { workspace = true }
+
+[dev-dependencies]
+array-bytes = { workspace = true }
+assert_matches = { workspace = true }
+itertools = { workspace = true }
+serde_json = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-sysvar = { workspace = true, features = ["dev-context-only-utils"] }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu", "wasm32-unknown-unknown"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["borsh"]
+borsh = [
+    "dep:borsh",
+    "dep:borsh0-10",
+    "dep:bovey-borsh",
+    "bovey-hash/borsh",
+    "bovey-instruction/borsh",
+    "bovey-program-error/borsh",
+    "bovey-pubkey/borsh",
+    "bovey-stake-interface/borsh",
+]
+dev-context-only-utils = []
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-epoch-rewards/frozen-abi",
+    "bovey-epoch-schedule/frozen-abi",
+    "bovey-fee-calculator/frozen-abi",
+    "bovey-hash/frozen-abi",
+    "bovey-instruction/frozen-abi",
+    "bovey-message/frozen-abi",
+    "bovey-pubkey/frozen-abi",
+    "bovey-rent/frozen-abi",
+    "bovey-short-vec/frozen-abi",
+    "bovey-stake-interface/frozen-abi",
+    "bovey-sysvar/frozen-abi"
+]
+
+[lints]
+workspace = true

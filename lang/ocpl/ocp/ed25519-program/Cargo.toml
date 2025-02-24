@@ -1,0 +1,32 @@
+[package]
+name = "ocp-ed25519-program"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bytemuck = { workspace = true }
+bytemuck_derive = { workspace = true }
+ed25519-dalek = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-precompile-error = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+
+[dev-dependencies]
+hex = { workspace = true }
+rand0-7 = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-sdk = { path = "../../sdk" }
+bovey-signer = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[lints]
+workspace = true

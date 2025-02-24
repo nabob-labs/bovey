@@ -1,0 +1,36 @@
+[package]
+name = "bovey-geyser-plugin-manager"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bovey-geyser-plugin-interface = { workspace = true }
+bs58 = { workspace = true }
+crossbeam-channel = { workspace = true }
+json5 = { workspace = true }
+jsonrpc-core = { workspace = true }
+libloading = { workspace = true }
+log = { workspace = true }
+serde_json = { workspace = true }
+bovey-account = { workspace = true }
+bovey-accounts-db = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-entry = { workspace = true }
+bovey-ledger = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rpc = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-transaction = { workspace = true }
+bovey-transaction-status = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

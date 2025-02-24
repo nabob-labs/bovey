@@ -1,0 +1,33 @@
+[package]
+name = "ocp-memo"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+no-entrypoint = []
+test-sbf = []
+
+[dependencies]
+bovey-account-info = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-msg = { workspace = true }
+bovey-program-entrypoint = { workspace = true }
+bovey-program-error = { workspace = true }
+bovey-pubkey = { workspace = true }
+
+[dev-dependencies]
+bovey-program-test = { workspace = true }
+bovey-sdk = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[package.metadata.bovey]
+program-id = "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"

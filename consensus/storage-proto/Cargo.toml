@@ -1,0 +1,43 @@
+[package]
+name = "bovey-storage-proto"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+bs58 = { workspace = true }
+prost = { workspace = true }
+serde = { workspace = true }
+bovey-account-decoder = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-message = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-serde = { workspace = true }
+bovey-signature = { workspace = true, features = ["std"] }
+bovey-transaction = { workspace = true }
+bovey-transaction-context = { workspace = true, features = ["serde"] }
+bovey-transaction-error = { workspace = true }
+bovey-transaction-status = { workspace = true }
+
+[dev-dependencies]
+enum-iterator = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_storage_proto"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[build-dependencies]
+tonic-build = { workspace = true }
+
+# windows users should install the protobuf compiler manually and set the PROTOC
+# envar to point to the installed binary
+[target."cfg(not(windows))".build-dependencies]
+protobuf-src = { workspace = true }

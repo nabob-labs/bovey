@@ -1,0 +1,48 @@
+[package]
+name = "bovey-poh"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+core_affinity = { workspace = true }
+crossbeam-channel = { workspace = true }
+log = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-entry = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-ledger = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-poh-config = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-time-utils = { workspace = true }
+bovey-transaction = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+bincode = { workspace = true }
+rand = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-perf = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-poh = { path = ".", features = ["dev-context-only-utils"] }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-sha256-hasher = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-system-transaction = { workspace = true }
+
+[features]
+dev-context-only-utils = []
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_poh"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

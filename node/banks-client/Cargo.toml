@@ -1,0 +1,30 @@
+[package]
+name = "bovey-banks-client"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+borsh = { workspace = true }
+futures = { workspace = true }
+bovey-banks-interface = { workspace = true }
+bovey-program = { workspace = true }
+bovey-sdk = { workspace = true }
+tarpc = { workspace = true, features = ["full"] }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+tokio-serde = { workspace = true, features = ["bincode"] }
+
+[dev-dependencies]
+bovey-banks-server = { workspace = true }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_banks_client"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

@@ -1,0 +1,53 @@
+[package]
+name = "ocp-secp256k1-program"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bincode = { workspace = true, optional = true }
+digest = { workspace = true }
+libsecp256k1 = { workspace = true, features = ["hmac"] }
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+sha3 = { workspace = true }
+bovey-feature-set = { workspace = true, optional = true }
+bovey-instruction = { workspace = true, features = ["std"], optional = true }
+bovey-precompile-error = { workspace = true, optional = true }
+bovey-sdk-ids = { workspace = true, optional = true }
+
+[dev-dependencies]
+anyhow = { workspace = true }
+hex = { workspace = true }
+rand0-7 = { workspace = true }
+bovey-account-info = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-instructions-sysvar = { workspace = true }
+bovey-keccak-hasher = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-msg = { workspace = true }
+bovey-program-error = { workspace = true }
+bovey-sdk = { path = "../../sdk" }
+ocp-secp256k1-program = { path = ".", features = ["dev-context-only-utils"] }
+bovey-signer = { workspace = true }
+
+[features]
+bincode = [
+    "dep:bincode",
+    "dep:bovey-feature-set",
+    "dep:bovey-instruction",
+    "dep:bovey-precompile-error",
+    "dep:bovey-sdk-ids",
+    "serde",
+]
+dev-context-only-utils = ["bincode"]
+serde = ["dep:serde", "dep:serde_derive"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]

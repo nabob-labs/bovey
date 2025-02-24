@@ -1,0 +1,16 @@
+[package]
+name = "bovey-timings"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+eager = { workspace = true }
+enum-iterator = { workspace = true }
+bovey-pubkey = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

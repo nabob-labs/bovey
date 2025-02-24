@@ -1,0 +1,37 @@
+[package]
+name = "ocp-transfer-hook-interface"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+arrayref = "0.3.9"
+bytemuck = { version = "1.20.0", features = ["derive"] }
+num-derive = "0.4"
+num-traits = "0.2"
+bovey-account-info = { workspace = true }
+bovey-cpi = { workspace = true }
+bovey-decode-error = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-msg = { workspace = true }
+bovey-program-error = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["curve25519"] }
+ocp-discriminator = { workspace = true }
+ocp-program-error = { workspace = true }
+ocp-tlv-account-resolution = { workspace = true }
+ocp-type-length-value = { workspace = true }
+ocp-pod = { workspace = true }
+thiserror = "2.0"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dev-dependencies]
+bovey-program = { workspace = true }
+tokio = { version = "1.42.0", features = ["full"] }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

@@ -1,0 +1,15 @@
+[package]
+name = "bovey-precompile-error"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+num-traits = { workspace = true }
+bovey-decode-error = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

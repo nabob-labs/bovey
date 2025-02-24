@@ -1,0 +1,199 @@
+[package]
+name = "bovey-sdk"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[features]
+# "program" feature is a legacy feature retained to support v1.3 and older
+# programs.  New development should not use this feature.  Instead use the
+# bovey-program crate
+program = []
+
+default = [
+    "borsh",
+    "full",  # functionality that is not compatible or needed for on-chain programs
+]
+full = [
+    "serde_json",
+    "bovey-signature",
+    "bovey-transaction-context/debug-signature",
+    "bovey-pubkey/rand",
+    "dep:bovey-client-traits",
+    "dep:bovey-cluster-type",
+    "dep:ocp-ed25519-program",
+    "dep:bovey-commitment-config",
+    "dep:bovey-compute-budget-interface",
+    "dep:bovey-genesis-config",
+    "dep:bovey-hard-forks",
+    "dep:bovey-keypair",
+    "dep:bovey-offchain-message",
+    "dep:bovey-precompile-error",
+    "dep:bovey-precompiles",
+    "dep:bovey-presigner",
+    "dep:bovey-quic-definitions",
+    "dep:bovey-rent-collector",
+    "dep:ocp-secp256k1-program",
+    "dep:bovey-seed-derivable",
+    "dep:bovey-seed-phrase",
+    "dep:bovey-shred-version",
+    "dep:bovey-signer",
+    "dep:bovey-system-transaction",
+    "dep:bovey-transaction",
+    "dep:bovey-transaction-error",
+]
+borsh = [
+    "bovey-compute-budget-interface/borsh",
+    "bovey-program/borsh",
+    "bovey-secp256k1-recover/borsh",
+]
+dev-context-only-utils = [
+    "bovey-account/dev-context-only-utils",
+    "bovey-compute-budget-interface/dev-context-only-utils",
+    "bovey-rent-debits/dev-context-only-utils",
+    "bovey-transaction/dev-context-only-utils",
+    "bovey-transaction-context/dev-context-only-utils",
+]
+frozen-abi = [
+    "bovey-feature-set/frozen-abi",
+    "bovey-fee-structure/frozen-abi",
+    "bovey-account/frozen-abi",
+    "bovey-cluster-type/frozen-abi",
+    "bovey-genesis-config/frozen-abi",
+    "bovey-hard-forks/frozen-abi",
+    "bovey-inflation/frozen-abi",
+    "bovey-packet/frozen-abi",
+    "bovey-poh-config/frozen-abi",
+    "bovey-program/frozen-abi",
+    "bovey-rent-collector/frozen-abi",
+    "bovey-reward-info/frozen-abi",
+    "bovey-short-vec/frozen-abi",
+    "bovey-signature/frozen-abi",
+    "bovey-transaction/frozen-abi",
+    "bovey-transaction-error/frozen-abi"
+]
+# Enables the "vendored" feature of openssl inside of secp256r1-program
+openssl-vendored = ["bovey-precompiles/openssl-vendored"]
+
+[dependencies]
+bincode = { workspace = true }
+bs58 = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true, optional = true }
+bovey-account = { workspace = true, features = ["bincode"] }
+bovey-bn254 = { workspace = true }
+bovey-client-traits = { workspace = true, optional = true }
+bovey-cluster-type = { workspace = true, features = [
+    "serde",
+], optional = true }
+bovey-commitment-config = { workspace = true, optional = true, features = [
+    "serde",
+] }
+bovey-compute-budget-interface = { workspace = true, optional = true, features = [
+    "serde",
+] }
+bovey-decode-error = { workspace = true }
+bovey-derivation-path = { workspace = true }
+ocp-ed25519-program = { workspace = true, optional = true }
+bovey-epoch-info = { workspace = true, features = ["serde"] }
+bovey-epoch-rewards-hasher = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-fee-structure = { workspace = true, features = ["serde"] }
+bovey-genesis-config = { workspace = true, features = [
+    "serde"
+], optional = true }
+bovey-hard-forks = { workspace = true, features = [
+    "serde",
+], optional = true }
+bovey-inflation = { workspace = true, features = ["serde"] }
+bovey-instruction = { workspace = true }
+bovey-keypair = { workspace = true, optional = true, features = [
+    "seed-derivable",
+] }
+bovey-message = { workspace = true, features = ["serde"] }
+bovey-native-token = { workspace = true }
+bovey-nonce-account = { workspace = true }
+bovey-offchain-message = { workspace = true, optional = true, features = ["verify"] }
+bovey-packet = { workspace = true, features = ["bincode", "serde"] }
+bovey-poh-config = { workspace = true, features = ["serde"] }
+bovey-precompile-error = { workspace = true, optional = true }
+bovey-precompiles = { workspace = true, optional = true }
+bovey-presigner = { workspace = true, optional = true }
+bovey-program = { workspace = true }
+bovey-program-memory = { workspace = true }
+bovey-pubkey = { workspace = true, default-features = false, features = [
+    "std",
+] }
+bovey-quic-definitions = { workspace = true, optional = true }
+bovey-rent-collector = { workspace = true, features = [
+    "serde"
+], optional = true }
+bovey-rent-debits = { workspace = true }
+bovey-reserved-account-keys = { workspace = true }
+bovey-reward-info = { workspace = true, features = ["serde"] }
+bovey-sanitize = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-sdk-macro = { workspace = true }
+ocp-secp256k1-program = { workspace = true, optional = true, features = [
+    "bincode",
+] }
+bovey-secp256k1-recover = { workspace = true }
+ocp-secp256r1-program = { workspace = true, default-features = false }
+bovey-seed-derivable = { workspace = true, optional = true }
+bovey-seed-phrase = { workspace = true, optional = true }
+bovey-serde = { workspace = true }
+bovey-serde-varint = { workspace = true }
+bovey-short-vec = { workspace = true }
+bovey-shred-version = { workspace = true, optional = true }
+bovey-signature = { workspace = true, features = [
+    "rand",
+    "serde",
+    "std",
+    "verify",
+], optional = true }
+bovey-signer = { workspace = true, optional = true }
+bovey-system-transaction = { workspace = true, optional = true }
+bovey-time-utils = { workspace = true }
+bovey-transaction = { workspace = true, features = [
+    "blake3",
+    "precompiles",
+    "serde",
+    "verify"
+], optional = true }
+bovey-transaction-context = { workspace = true, features = ["bincode"] }
+bovey-transaction-error = { workspace = true, features = [
+    "serde",
+], optional = true }
+bovey-validator-exit = { workspace = true }
+thiserror = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom = { version = "0.1", features = ["wasm-bindgen"] }
+js-sys = { workspace = true }
+wasm-bindgen = { workspace = true }
+
+[dev-dependencies]
+curve25519-dalek = { workspace = true }
+ed25519-dalek = { workspace = true }
+libsecp256k1 = { workspace = true, features = ["hmac"] }
+openssl = { workspace = true }
+rand0-7 = { workspace = true }
+serde_derive = { workspace = true }
+serde_with = { workspace = true, features = ["macros"] }
+bovey-instructions-sysvar = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-program = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-sdk = { path = ".", features = ["dev-context-only-utils"] }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu", "wasm32-unknown-unknown"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[lints]
+workspace = true

@@ -1,0 +1,19 @@
+[package]
+name = "bovey-derivation-path"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+derivation-path = { workspace = true }
+qstring = { workspace = true }
+uriparse = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

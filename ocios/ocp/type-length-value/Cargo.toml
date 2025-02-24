@@ -1,0 +1,30 @@
+[package]
+name = "ocp-type-length-value"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+derive = ["dep:ocp-type-length-value-derive"]
+
+[dependencies]
+bytemuck = { version = "1.21.0", features = ["derive"] }
+num-derive = "0.4"
+num-traits = "0.2"
+bovey-account-info = { workspace = true }
+bovey-decode-error = { workspace = true }
+bovey-msg = { workspace = true }
+bovey-program-error = { workspace = true }
+ocp-discriminator = { workspace = true }
+ocp-type-length-value-derive = { workspace = true, optional = true }
+ocp-pod = { workspace = true }
+thiserror = "2.0"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

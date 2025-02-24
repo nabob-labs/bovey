@@ -1,0 +1,54 @@
+[package]
+name = "bovey-cli-output"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+Inflector = { workspace = true }
+base64 = { workspace = true }
+chrono = { workspace = true, features = ["default", "serde"] }
+clap = "2.33.0"
+console = { workspace = true }
+humantime = { workspace = true }
+indicatif = { workspace = true }
+pretty-hex = { workspace = true }
+semver = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+bovey-account = { workspace = true }
+bovey-account-decoder = { workspace = true }
+bovey-bincode = { workspace = true }
+bovey-clap-utils = { workspace = true }
+bovey-cli-config = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-epoch-info = { workspace = true, features = ["serde"] }
+bovey-hash = { workspace = true }
+bovey-message = { workspace = true }
+bovey-native-token = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-program = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-reserved-account-keys = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-system-interface = { workspace = true }
+bovey-sysvar = { workspace = true }
+bovey-transaction = { workspace = true, features = ["verify"] }
+bovey-transaction-error = { workspace = true }
+bovey-transaction-status = { workspace = true }
+ocp-vote-program = { workspace = true }
+ocp-memo = { workspace = true, features = ["no-entrypoint"] }
+
+[dev-dependencies]
+ed25519-dalek = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-transaction-context = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

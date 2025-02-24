@@ -1,0 +1,33 @@
+[package]
+name = "bovey-instructions-sysvar"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+qualifier_attr = { workspace = true, optional = true }
+bovey-account-info = { workspace = true }
+bovey-instruction = { workspace = true, default-features = false }
+bovey-program-error = { workspace = true }
+bovey-pubkey = { workspace = true, default-features = false }
+bovey-sanitize = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-serialize-utils = { workspace = true }
+bovey-sysvar-id = { workspace = true }
+
+[target.'cfg(not(target_os = "bovey"))'.dependencies]
+bitflags = { workspace = true }
+
+[features]
+dev-context-only-utils = ["dep:qualifier_attr"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

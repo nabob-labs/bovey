@@ -1,0 +1,50 @@
+[package]
+name = "bovey-net-utils"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+bincode = { workspace = true }
+bytes = { workspace = true }
+clap = { version = "3.1.5", features = ["cargo"], optional = true }
+itertools = { workspace = true }
+log = { workspace = true }
+nix = { workspace = true, features = ["socket"] }
+rand = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+socket2 = { workspace = true }
+bovey-logger = { workspace = true, optional = true }
+bovey-serde = { workspace = true }
+bovey-version = { workspace = true, optional = true }
+tokio = { workspace = true, features = ["full"] }
+url = { workspace = true }
+
+[dev-dependencies]
+bovey-logger = { workspace = true }
+
+[features]
+default = []
+clap = ["dep:clap", "dep:bovey-logger", "dep:bovey-version"]
+dev-context-only-utils = []
+
+[lib]
+name = "bovey_net_utils"
+
+[[bin]]
+name = "bovey-ip-address"
+path = "src/bin/ip_address.rs"
+required-features = ["clap"]
+
+[[bin]]
+name = "bovey-ip-address-server"
+path = "src/bin/ip_address_server.rs"
+required-features = ["clap"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

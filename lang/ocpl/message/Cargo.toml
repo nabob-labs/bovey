@@ -1,0 +1,77 @@
+[package]
+name = "bovey-message"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bincode = { workspace = true, optional = true }
+blake3 = { workspace = true, features = ["traits-preview"], optional = true }
+lazy_static = { workspace = true }
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-bincode = { workspace = true, optional = true }
+bovey-frozen-abi = { workspace = true, optional = true }
+bovey-frozen-abi-macro = { workspace = true, optional = true }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-logger = { workspace = true, optional = true }
+bovey-pubkey = { workspace = true }
+bovey-sanitize = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-short-vec = { workspace = true, optional = true }
+bovey-system-interface = { workspace = true, optional = true, features = [
+    "bincode",
+] }
+bovey-transaction-error = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = { workspace = true }
+
+[dev-dependencies]
+anyhow = { workspace = true }
+bitflags = { workspace = true }
+borsh = { workspace = true }
+itertools = { workspace = true }
+serde_json = { workspace = true }
+bovey-message = { path = ".", features = ["dev-context-only-utils"] }
+bovey-nonce = { workspace = true }
+bovey-program = { path = "../program" }
+bovey-sha256-hasher = { workspace = true }
+bovey-sysvar = { workspace = true }
+static_assertions = { workspace = true }
+
+[features]
+bincode = [
+    "dep:bincode",
+    "dep:bovey-bincode",
+    "dep:bovey-system-interface",
+    "serde",
+]
+blake3 = ["dep:blake3"]
+dev-context-only-utils = ["bincode", "blake3"]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "dep:bovey-logger",
+    "bovey-hash/frozen-abi",
+    "bovey-pubkey/frozen-abi",
+]
+serde = [
+    "dep:serde",
+    "dep:serde_derive",
+    "dep:bovey-short-vec",
+    "bovey-hash/serde",
+    "bovey-pubkey/serde",
+]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu", "wasm32-unknown-unknown"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

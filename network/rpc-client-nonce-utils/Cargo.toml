@@ -1,0 +1,42 @@
+[package]
+name = "bovey-rpc-client-nonce-utils"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+clap = { version = "2.33.0", optional = true }
+bovey-account = { workspace = true, features = ["bincode"] }
+bovey-clap-utils = { workspace = true, optional = true }
+bovey-commitment-config = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-message = { workspace = true }
+bovey-nonce = { workspace = true, features = ["serde"] }
+bovey-pubkey = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+anyhow = { workspace = true }
+futures = { workspace = true }
+serde_json = { workspace = true }
+bovey-account-decoder = { workspace = true }
+bovey-fee-calculator = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-sha256-hasher = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-system-interface = { workspace = true }
+bovey-transaction = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+
+[features]
+default = []
+clap = ["dep:clap", "dep:bovey-clap-utils"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

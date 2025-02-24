@@ -1,0 +1,30 @@
+[package]
+name = "bovey-builtins"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+dev-context-only-utils = []
+
+[dependencies]
+ocp-address-lookup-table-program = { workspace = true }
+ocp-bpf-loader-program = { workspace = true }
+ocp-compute-budget-program = { workspace = true }
+ocp-config-program = { workspace = true }
+bovey-feature-set = { workspace = true }
+ocp-loader-v4-program = { workspace = true }
+bovey-program-runtime = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+ocp-stake-program = { workspace = true }
+ocp-system-program = { workspace = true }
+ocp-vote-program = { workspace = true }
+ocp-zk-elgamal-proof-program = { workspace = true }
+ocp-zk-token-proof-program = { workspace = true }
+
+[lints]
+workspace = true

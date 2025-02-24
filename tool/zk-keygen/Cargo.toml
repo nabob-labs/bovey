@@ -1,0 +1,32 @@
+[package]
+name = "bovey-zk-keygen"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bs58 = { workspace = true }
+clap = { version = "3.1.5", features = ["cargo", "derive"] }
+dirs-next = { workspace = true }
+bovey-clap-v3-utils = { workspace = true }
+bovey-remote-wallet = { workspace = true, features = ["default"] }
+bovey-seed-derivable = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-version = { workspace = true }
+bovey-zk-token-sdk = { workspace = true }
+thiserror = { workspace = true }
+tiny-bip39 = { workspace = true }
+
+[dev-dependencies]
+bovey-pubkey = { workspace = true, features = ["rand"] }
+tempfile = { workspace = true }
+
+[[bin]]
+name = "bovey-zk-keygen"
+path = "src/main.rs"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

@@ -1,0 +1,81 @@
+[package]
+name = "bovey-vote-interface"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+arbitrary = { workspace = true, features = ["derive"], optional = true }
+bincode = { workspace = true, optional = true }
+num-derive = { workspace = true }
+num-traits = { workspace = true }
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-clock = { workspace = true }
+bovey-decode-error = { workspace = true }
+bovey-frozen-abi = { workspace = true, features = [
+    "frozen-abi",
+], optional = true }
+bovey-frozen-abi-macro = { workspace = true, features = [
+    "frozen-abi",
+], optional = true }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-pubkey = { workspace = true }
+bovey-rent = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-serde-varint = { workspace = true, optional = true }
+bovey-serialize-utils = { workspace = true, optional = true }
+bovey-short-vec = { workspace = true, optional = true }
+bovey-system-interface = { workspace = true, features = ["bincode"], optional = true }
+
+[target.'cfg(target_os = "bovey")'.dependencies]
+bovey-serialize-utils = { workspace = true }
+
+[dev-dependencies]
+itertools = { workspace = true }
+rand = { workspace = true }
+bovey-epoch-schedule = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-vote-interface = { path = ".", features = ["dev-context-only-utils"] }
+
+[features]
+bincode = [
+    "dep:bincode",
+    "dep:bovey-serialize-utils",
+    "dep:bovey-system-interface",
+    "serde"
+]
+dev-context-only-utils = [
+    "bincode",
+    "dep:arbitrary",
+    "bovey-pubkey/dev-context-only-utils",
+]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "serde",
+    "bovey-hash/frozen-abi",
+    "bovey-pubkey/frozen-abi",
+    "bovey-short-vec/frozen-abi",
+]
+serde = [
+    "dep:serde",
+    "dep:serde_derive",
+    "dep:bovey-serde-varint",
+    "dep:bovey-short-vec",
+    "bovey-hash/serde",
+    "bovey-pubkey/serde"
+]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

@@ -1,0 +1,12 @@
+[package]
+name = "bovey-banking-stage-ingress-types"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+crossbeam-channel = { workspace = true }
+bovey-perf = { workspace = true }

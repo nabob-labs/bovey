@@ -1,0 +1,25 @@
+[package]
+name = "bovey-download-utils"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+log = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-file-download = { workspace = true }
+bovey-genesis-config = { workspace = true }
+bovey-runtime = { workspace = true }
+
+[dev-dependencies]
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_download_utils"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

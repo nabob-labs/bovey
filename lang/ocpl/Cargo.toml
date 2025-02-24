@@ -1,0 +1,311 @@
+[profile.release]
+split-debuginfo = "unpacked"
+lto = "thin"
+
+[workspace]
+members = [
+    "logger",
+    "frozen-abi-macro",
+    "frozen-abi",
+    "atomic-u64",
+    "decode-error",
+    "define-syscall",
+    "sanitize",
+    "hash",
+    "keccak-hasher",
+    "sha256-hasher",
+    "pubkey",
+    "instruction",
+    "serialize-utils",
+    "msg",
+    "program-error",
+    "program-memory",
+    "account-info",
+    "sdk-macro",
+    "sdk-ids",
+    "sysvar-id",
+    "clock",
+    "epoch-schedule",
+    "fee-calculator",
+    "last-restart-slot",
+    "program-entrypoint",
+    "rent",
+    "slot-hashes",
+    "slot-history",
+    "bincode",
+    "stable-layout",
+    "cpi",
+    "native-token",
+    "program-option",
+    "program-pack",
+    "secp256k1-recover",
+    "short-vec",
+    "serde-varint",
+    "transaction-error",
+    "big-mod-exp",
+    "blake3-hasher",
+    "borsh",
+    "epoch-rewards",
+    "nonce",
+    "instructions-sysvar",
+    "system-interface",
+    "stake-interface",
+    "sysvar",
+    "account",
+    "feature-gate-interface",
+    "address-lookup-table-interface",
+    "compute-budget-interface",
+    "loader-v2-interface",
+    "loader-v3-interface",
+    "loader-v4-interface",
+    "vote-interface",
+    "message",
+    "example-mocks",
+    "program",
+    "derivation-path",
+    "signature",
+    "bn254",
+    "feature-set",
+    "packet",
+    "precompile-error",
+    "inflation",
+    "epoch-info",
+    "epoch-rewards-hasher",
+    "fee-structure",
+    "hard-forks",
+    "seed-derivable",
+    "seed-phrase",
+    "signer",
+    "keypair",
+    "nonce-account",
+    "offchain-message",
+    "poh-config",
+    "presigner",
+    "quic-definitions",
+    "reward-info",
+    "reserved-account-keys",
+    "commitment-config",
+    "cluster-type",
+    "serde",
+    "time-utils",
+    "shred-version",
+    "genesis-config",
+    "rent-collector",
+    "rent-debits",
+    "transaction-context",
+    "validator-exit",
+    "ocp/ed25519-program",
+    "ocp/secp256k1-program",
+    "ocp/secp256r1-program",
+    "precompiles",
+    "transaction",
+    "client-traits",
+    "system-transaction",
+    "sdk",
+    "file-download",
+    "package-metadata-macro",
+    "package-metadata",
+]
+
+resolver = "2"
+
+[workspace.package]
+authors = ["Bovey Maintainers <maintainers@bovey.xyz>"]
+repository = "https://github.com/nabob-labs/bovey"
+homepage = "https://bovey.xyz/"
+license = "Apache-2.0"
+edition = "2021"
+version = "1.0.0"
+
+[workspace.lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = [
+    'cfg(target_os, values("bovey"))',
+    'cfg(feature, values("frozen-abi", "no-entrypoint"))',
+]
+
+[workspace.dependencies]
+bovey-logger = { path = "logger" }
+bovey-frozen-abi-macro = { path = "frozen-abi-macro" }
+bovey-frozen-abi = { path = "frozen-abi" }
+bovey-atomic-u64 = { path = "atomic-u64" }
+bovey-decode-error = { path = "decode-error" }
+bovey-define-syscall = { path = "define-syscall" }
+bovey-sanitize = { path = "sanitize" }
+bovey-hash = { path = "hash", default-features = false }
+bovey-keccak-hasher = { path = "keccak-hasher" }
+bovey-sha256-hasher = { path = "sha256-hasher" }
+bovey-pubkey = { path = "pubkey", default-features = false }
+bovey-instruction = { path = "instruction", default-features = false }
+bovey-serialize-utils = { path = "serialize-utils" }
+bovey-msg = { path = "msg" }
+bovey-program-error = { path = "program-error" }
+bovey-program-memory = { path = "program-memory" }
+bovey-account-info = { path = "account-info" }
+bovey-sdk-macro = { path = "sdk-macro" }
+bovey-sdk-ids = { path = "sdk-ids" }
+bovey-sysvar-id = { path = "sysvar-id" }
+bovey-clock = { path = "clock" }
+bovey-epoch-schedule = { path = "epoch-schedule" }
+bovey-fee-calculator = { path = "fee-calculator" }
+bovey-last-restart-slot = { path = "last-restart-slot" }
+bovey-program-entrypoint = { path = "program-entrypoint" }
+bovey-rent = { path = "rent", default-features = false }
+bovey-slot-hashes = { path = "slot-hashes" }
+bovey-slot-history = { path = "slot-history" }
+bovey-bincode = { path = "bincode" }
+bovey-stable-layout = { path = "stable-layout" }
+bovey-cpi = { path = "cpi" }
+bovey-native-token = { path = "native-token" }
+bovey-program-option = { path = "program-option" }
+bovey-program-pack = { path = "program-pack" }
+bovey-secp256k1-recover = { path = "secp256k1-recover" }
+bovey-short-vec = { path = "short-vec" }
+bovey-serde-varint = { path = "serde-varint" }
+bovey-transaction-error = { path = "transaction-error" }
+bovey-big-mod-exp = { path = "big-mod-exp" }
+bovey-blake3-hasher = { path = "blake3-hasher" }
+bovey-borsh = { path = "borsh" }
+bovey-epoch-rewards = { path = "epoch-rewards" }
+bovey-nonce = { path = "nonce" }
+bovey-instructions-sysvar = { path = "instructions-sysvar" }
+bovey-system-interface = { path = "system-interface" }
+bovey-stake-interface = { path = "stake-interface" }
+bovey-sysvar = { path = "sysvar" }
+bovey-account = { path = "account" }
+bovey-feature-gate-interface = { path = "feature-gate-interface" }
+bovey-address-lookup-table-interface = { path = "address-lookup-table-interface" }
+bovey-compute-budget-interface = { path = "compute-budget-interface" }
+bovey-loader-v2-interface = { path = "loader-v2-interface" }
+bovey-loader-v3-interface = { path = "loader-v3-interface" }
+bovey-loader-v4-interface = { path = "loader-v4-interface" }
+bovey-vote-interface = { path = "vote-interface" }
+bovey-message = { path = "message" }
+bovey-example-mocks = { path = "example-mocks" }
+bovey-program = { path = "program", default-features = false }
+bovey-derivation-path = { path = "derivation-path" }
+bovey-signature = { path = "signature", default-features = false }
+bovey-bn254 = { path = "bn254" }
+bovey-feature-set = { path = "feature-set" }
+bovey-packet = { path = "packet" }
+bovey-precompile-error = { path = "precompile-error" }
+bovey-inflation = { path = "inflation" }
+bovey-epoch-info = { path = "epoch-info" }
+bovey-epoch-rewards-hasher = { path = "epoch-rewards-hasher" }
+bovey-fee-structure = { path = "fee-structure" }
+bovey-hard-forks = { path = "hard-forks", default-features = false }
+bovey-seed-derivable = { path = "seed-derivable" }
+bovey-seed-phrase = { path = "seed-phrase" }
+bovey-signer = { path = "signer" }
+bovey-keypair = { path = "keypair" }
+bovey-nonce-account = { path = "nonce-account" }
+bovey-offchain-message = { path = "offchain-message" }
+bovey-poh-config = { path = "poh-config" }
+bovey-presigner = { path = "presigner" }
+bovey-quic-definitions = { path = "quic-definitions" }
+bovey-reward-info = { path = "reward-info" }
+bovey-reserved-account-keys = { path = "reserved-account-keys", default-features = false }
+bovey-commitment-config = { path = "commitment-config" }
+bovey-cluster-type = { path = "cluster-type" }
+bovey-serde = { path = "serde" }
+bovey-time-utils = { path = "time-utils" }
+bovey-shred-version = { path = "shred-version" }
+bovey-genesis-config = { path = "genesis-config" }
+bovey-rent-collector = { path = "rent-collector" }
+bovey-rent-debits = { path = "rent-debits" }
+bovey-transaction-context = { path = "transaction-context" }
+bovey-validator-exit = { path = "validator-exit" }
+ocp-ed25519-program = { path = "ocp/ed25519-program" }
+ocp-secp256k1-program = { path = "ocp/secp256k1-program" }
+ocp-secp256r1-program = { path = "ocp/secp256r1-program", default-features = false }
+bovey-precompiles = { path = "precompiles" }
+bovey-transaction = { path = "transaction" }
+bovey-client-traits = { path = "client-traits" }
+bovey-system-transaction = { path = "system-transaction" }
+bovey-sdk = { path = "sdk" }
+bovey-file-download = { path = "file-download" }
+bovey-package-metadata-macro = { path = "package-metadata-macro" }
+bovey-package-metadata = { path = "package-metadata" }
+
+ahash = "0.8.11"
+anyhow = "1.0.95"
+arbitrary = "1.4.1"
+ark-bn254 = "0.4.0"
+ark-ec = "0.4.0"
+ark-ff = "0.4.0"
+ark-serialize = "0.4.0"
+array-bytes = "=1.4.1"
+assert_matches = "1.5.0"
+base64 = "0.22.1"
+bincode = "1.3.3"
+bitflags = { version = "2.8.0" }
+blake3 = "1.5.5"
+borsh = { version = "1.5.5", features = ["derive", "unstable__schema"] }
+borsh0-10 = { package = "borsh", version = "0.10.3" }
+bs58 = { version = "0.5.1", default-features = false }
+bv = "0.11.1"
+bytemuck = "1.21.0"
+bytemuck_derive = "1.8.1"
+cfg_eval = "0.1.2"
+chrono = { version = "0.4.39", default-features = false }
+console = "0.15.10"
+console_error_panic_hook = "0.1.7"
+console_log = "0.2.2"
+criterion = "0.5.1"
+curve25519-dalek = { version = "4.1.3", features = ["digest", "rand_core"] }
+derivation-path = { version = "0.2.0", default-features = false }
+digest = "0.10.7"
+ed25519-dalek = "=1.0.1"
+ed25519-dalek-bip32 = "0.2.0"
+env_logger = "0.9.3"
+five8_const = "0.1.3"
+getrandom = "0.2.10"
+hex = "0.4.3"
+hmac = "0.12.1"
+im = "15.1.0"
+indicatif = "0.17.9"
+itertools = "0.12.1"
+js-sys = "0.3.77"
+lazy_static = "1.5.0"
+libsecp256k1 = { version = "0.6.0", default-features = false, features = [
+    "std",
+    "static-context",
+] }
+log = "0.4.25"
+memmap2 = "0.5.10"
+memoffset = "0.9"
+num-bigint = "0.4.6"
+num-derive = "0.4"
+num-traits = "0.2"
+num_enum = "0.7.3"
+openssl = "0.10"
+parking_lot = "0.12"
+pbkdf2 = { version = "0.11.0", default-features = false }
+proc-macro2 = "1.0.93"
+proptest = "1.6"
+qstring = "0.7.2"
+qualifier_attr = { version = "0.2.2", default-features = false }
+quote = "1.0"
+rand = "0.8.5"
+rand0-7 = { package = "rand", version = "0.7" }
+reqwest = { version = "0.11.27", default-features = false }
+serde = "1.0.217" # must match the serde_derive version, see https://github.com/serde-rs/serde/issues/2584#issuecomment-1685252251
+serde-big-array = "0.5.1"
+serde_bytes = "0.11.15"
+serde_derive = "1.0.217" # must match the serde version, see https://github.com/serde-rs/serde/issues/2584#issuecomment-1685252251
+serde_json = "1.0.137"
+serde_with = { version = "3.12.0", default-features = false }
+serial_test = "2.0.0"
+sha2 = "0.10.8"
+sha3 = "0.10.8"
+siphasher = "0.3.11"
+static_assertions = "1.1.0"
+strum = "0.24"
+strum_macros = "0.24"
+syn = "2.0"
+test-case = "3.3.1"
+thiserror = "2.0.11"
+tiny-bip39 = "0.8.2"
+toml = "0.8.20"
+uriparse = "0.6.4"
+wasm-bindgen = "0.2"

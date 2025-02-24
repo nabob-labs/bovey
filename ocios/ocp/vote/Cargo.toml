@@ -1,0 +1,76 @@
+[package]
+name = "ocp-vote-program"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+log = { workspace = true }
+num-derive = { workspace = true }
+num-traits = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+bovey-account = { workspace = true }
+bovey-bincode = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-epoch-schedule = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-metrics = { workspace = true, optional = true }
+bovey-packet = { workspace = true }
+bovey-program-runtime = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["curve25519"] }
+bovey-rent = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-slot-hashes = { workspace = true }
+bovey-transaction = { workspace = true, features = ["bincode"] }
+bovey-transaction-context = { workspace = true, features = ["bincode"] }
+bovey-vote-interface = { workspace = true, features = ["bincode"] }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+criterion = { workspace = true }
+bovey-account = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["rand"] }
+bovey-rent = { workspace = true }
+bovey-sdk = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-sha256-hasher = { workspace = true }
+test-case = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "ocp_vote_program"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+default = ["metrics"]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-program-runtime/frozen-abi",
+    "bovey-vote-interface/frozen-abi"
+]
+metrics = ["dep:bovey-metrics"]
+
+[lints]
+workspace = true

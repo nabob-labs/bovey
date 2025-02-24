@@ -1,0 +1,24 @@
+[package]
+name = "bovey-hard-forks"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = ["frozen-abi"] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = ["frozen-abi"] }
+
+[features]
+frozen-abi = ["dep:bovey-frozen-abi", "dep:bovey-frozen-abi-macro"]
+serde = ["dep:serde", "dep:serde_derive"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[lints]
+workspace = true

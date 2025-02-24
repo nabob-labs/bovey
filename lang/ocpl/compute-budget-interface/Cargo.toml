@@ -1,0 +1,35 @@
+[package]
+name = "bovey-compute-budget-interface"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+borsh = { workspace = true, optional = true }
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-frozen-abi = { workspace = true, features = [
+    "frozen-abi",
+], optional = true }
+bovey-frozen-abi-macro = { workspace = true, features = [
+    "frozen-abi",
+], optional = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-sdk-ids = { workspace = true }
+
+[features]
+borsh = ["dep:borsh"]
+dev-context-only-utils = ["borsh"]
+frozen-abi = ["dep:bovey-frozen-abi", "dep:bovey-frozen-abi-macro", "serde"]
+serde = ["dep:serde", "dep:serde_derive"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[lints]
+workspace = true

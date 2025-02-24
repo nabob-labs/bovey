@@ -1,0 +1,87 @@
+[package]
+name = "bovey-transaction"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bincode = { workspace = true, optional = true }
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-bincode = { workspace = true, optional = true }
+bovey-feature-set = { workspace = true, optional = true }
+bovey-frozen-abi = { workspace = true, optional = true }
+bovey-frozen-abi-macro = { workspace = true, optional = true }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-logger = { workspace = true, optional = true }
+bovey-message = { workspace = true }
+bovey-precompiles = { workspace = true, optional = true }
+bovey-pubkey = { workspace = true }
+bovey-reserved-account-keys = { workspace = true, optional = true }
+bovey-sanitize = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-short-vec = { workspace = true, optional = true }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true, optional = true }
+bovey-system-interface = { workspace = true, optional = true, features = ["bincode"] }
+bovey-transaction-error = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+bovey-keypair = { workspace = true }
+wasm-bindgen = { workspace = true }
+
+[dev-dependencies]
+anyhow = { workspace = true }
+bincode = { workspace = true }
+borsh = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true, features = ["borsh"] }
+bovey-keypair = { workspace = true }
+bovey-nonce = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-presigner = { workspace = true }
+bovey-program = { workspace = true, default-features = false }
+bovey-pubkey = { workspace = true, features = ["rand"] }
+bovey-sdk = { path = "../sdk" }
+bovey-sha256-hasher = { workspace = true }
+bovey-transaction = { path = ".", features = ["dev-context-only-utils"] }
+static_assertions = { workspace = true }
+
+[features]
+bincode = [
+    "dep:bincode",
+    "dep:bovey-bincode",
+    "dep:bovey-signer",
+    "dep:bovey-system-interface",
+    "serde",
+    "bovey-message/bincode",
+]
+blake3 = [
+    "dep:bovey-reserved-account-keys",
+    "bincode",
+    "bovey-message/blake3",
+]
+dev-context-only-utils = ["blake3", "precompiles", "serde", "verify"]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "dep:bovey-logger",
+]
+precompiles = ["dep:bovey-feature-set", "dep:bovey-precompiles"]
+serde = [
+    "dep:serde",
+    "dep:serde_derive",
+    "dep:bovey-short-vec",
+    "bovey-message/serde",
+    "bovey-signature/serde",
+]
+verify = ["blake3", "bovey-signature/verify"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu", "wasm32-unknown-unknown"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]

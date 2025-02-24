@@ -1,0 +1,35 @@
+[package]
+name = "bovey-epoch-rewards"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+serde = { workspace = true, optional = true }
+serde_derive = { workspace = true, optional = true }
+bovey-frozen-abi = { workspace = true, optional = true }
+bovey-frozen-abi-macro = { workspace = true, optional = true }
+bovey-hash = { workspace = true, default-features = false }
+bovey-sdk-ids = { workspace = true }
+bovey-sdk-macro = { workspace = true }
+bovey-sysvar-id = { workspace = true, optional = true }
+
+[dev-dependencies]
+bovey-epoch-rewards = { path = ".", features = ["sysvar"] }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+all-features = true
+rustdoc-args = ["--cfg=docsrs"]
+
+[features]
+frozen-abi = ["dep:bovey-frozen-abi", "dep:bovey-frozen-abi-macro", "bovey-hash/frozen-abi", "std"]
+serde = ["dep:serde", "dep:serde_derive", "bovey-hash/serde"]
+std = []
+sysvar = ["dep:bovey-sysvar-id"]
+
+[lints]
+workspace = true

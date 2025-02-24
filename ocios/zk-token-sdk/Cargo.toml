@@ -1,0 +1,50 @@
+[package]
+name = "bovey-zk-token-sdk"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+base64 = { workspace = true }
+bytemuck = { workspace = true }
+bytemuck_derive = { workspace = true }
+num-derive = { workspace = true }
+num-traits = { workspace = true }
+bovey-curve25519 = { workspace = true }
+bovey-instruction = { workspace = true, features = ["std"] }
+bovey-pubkey = { workspace = true, features = ["bytemuck"] }
+bovey-sdk-ids = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+bovey-keypair = { workspace = true }
+tiny-bip39 = { workspace = true }
+
+[target.'cfg(not(target_os = "bovey"))'.dependencies]
+aes-gcm-siv = { workspace = true }
+bincode = { workspace = true }
+curve25519-dalek = { workspace = true, features = ["serde"] }
+itertools = { workspace = true }
+lazy_static = { workspace = true }
+merlin = { workspace = true }
+rand = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+serde_json = { workspace = true }
+sha3 = { workspace = true }
+bovey-derivation-path = { workspace = true }
+bovey-seed-derivable = { workspace = true }
+bovey-seed-phrase = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true }
+subtle = { workspace = true }
+zeroize = { workspace = true, features = ["zeroize_derive"] }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[lints]
+workspace = true

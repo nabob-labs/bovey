@@ -1,0 +1,17 @@
+[package]
+name = "bovey-stable-layout"
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+bovey-instruction = { workspace = true, default-features = false, features = [
+    "std",
+] }
+bovey-pubkey = { workspace = true, default-features = false }
+
+[dev-dependencies]
+memoffset = { workspace = true }

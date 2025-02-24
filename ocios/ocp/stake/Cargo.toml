@@ -1,0 +1,54 @@
+[package]
+name = "ocp-stake-program"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bincode = { workspace = true }
+log = { workspace = true }
+bovey-account = { workspace = true }
+bovey-bincode = { workspace = true }
+bovey-clock = { workspace = true }
+ocp-config-program = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-genesis-config = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-log-collector = { workspace = true }
+bovey-native-token = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-program-runtime = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["sha2"] }
+bovey-rent = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-stake-interface = { workspace = true }
+bovey-sysvar = { workspace = true }
+bovey-transaction-context = { workspace = true, features = ["bincode"] }
+bovey-type-overrides = { workspace = true }
+bovey-vote-interface = { workspace = true, features = ["bincode"] }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+criterion = { workspace = true }
+proptest = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-epoch-rewards = { workspace = true }
+bovey-epoch-schedule = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["rand"] }
+bovey-sysvar-id = { workspace = true }
+ocp-vote-program = { workspace = true, default-features = false }
+test-case = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "ocp_stake_program"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[lints]
+workspace = true

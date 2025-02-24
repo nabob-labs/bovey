@@ -1,0 +1,41 @@
+[package]
+name = "bovey-test-validator"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+base64 = { workspace = true }
+bincode = { workspace = true }
+crossbeam-channel = { workspace = true }
+log = { workspace = true }
+serde_derive = { workspace = true }
+serde_json = { workspace = true }
+bovey-accounts-db = { workspace = true }
+bovey-cli-output = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-core = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-geyser-plugin-manager = { workspace = true }
+bovey-gossip = { workspace = true }
+bovey-ledger = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-program-test = { workspace = true }
+bovey-rpc = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-sdk = { workspace = true, features = ["openssl-vendored"] }
+bovey-streamer = { workspace = true }
+bovey-tpu-client = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+
+[dev-dependencies]
+bovey-sdk-ids = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

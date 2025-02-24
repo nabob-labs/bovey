@@ -1,0 +1,148 @@
+[package]
+name = "bovey-runtime"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+ahash = { workspace = true }
+aquamarine = { workspace = true }
+arrayref = { workspace = true }
+base64 = { workspace = true }
+bincode = { workspace = true }
+blake3 = { workspace = true }
+bv = { workspace = true, features = ["serde"] }
+bytemuck = { workspace = true }
+bzip2 = { workspace = true }
+crossbeam-channel = { workspace = true }
+dashmap = { workspace = true, features = ["rayon", "raw-api"] }
+dir-diff = { workspace = true }
+flate2 = { workspace = true }
+fnv = { workspace = true }
+im = { workspace = true, features = ["rayon", "serde"] }
+itertools = { workspace = true }
+lazy_static = { workspace = true }
+libc = { workspace = true }
+log = { workspace = true }
+lz4 = { workspace = true }
+memmap2 = { workspace = true }
+mockall = { workspace = true }
+modular-bitfield = { workspace = true }
+num-derive = { workspace = true }
+num-traits = { workspace = true }
+num_cpus = { workspace = true }
+num_enum = { workspace = true }
+percentage = { workspace = true }
+qualifier_attr = { workspace = true }
+rand = { workspace = true }
+rayon = { workspace = true }
+regex = { workspace = true }
+serde = { workspace = true, features = ["rc"] }
+serde_derive = { workspace = true }
+serde_json = { workspace = true }
+serde_with = { workspace = true }
+bovey-accounts-db = { workspace = true }
+ocp-bpf-loader-program = { workspace = true }
+bovey-bucket-map = { workspace = true }
+bovey-builtins = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-compute-budget-instruction = { workspace = true }
+ocp-config-program = { workspace = true }
+bovey-cost-model = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-fee = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-inline-ocp = { workspace = true }
+bovey-lattice-hash = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-nohash-hasher = { workspace = true }
+bovey-nonce-account = { workspace = true }
+bovey-perf = { workspace = true }
+bovey-program = { workspace = true }
+bovey-program-runtime = { workspace = true, features = ["metrics"] }
+bovey-pubkey = { workspace = true }
+bovey-rayon-threadlimit = { workspace = true }
+bovey-runtime-transaction = { workspace = true }
+bovey-sdk = { workspace = true }
+ocp-stake-program = { workspace = true }
+bovey-vm = { workspace = true }
+bovey-vm-rent-collector = { workspace = true }
+bovey-vm-transaction = { workspace = true }
+ocp-system-program = { workspace = true, optional = true }
+bovey-timings = { workspace = true }
+bovey-transaction-status-client-types = { workspace = true }
+bovey-unified-scheduler-logic = { workspace = true }
+bovey-version = { workspace = true }
+bovey-vote = { workspace = true }
+ocp-vote-program = { workspace = true }
+static_assertions = { workspace = true }
+strum = { workspace = true, features = ["derive"] }
+strum_macros = { workspace = true }
+symlink = { workspace = true }
+tar = { workspace = true }
+tempfile = { workspace = true }
+thiserror = { workspace = true }
+zstd = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_runtime"
+
+[dev-dependencies]
+bovey-transaction-view = { workspace = true }
+assert_matches = { workspace = true }
+ed25519-dalek = { workspace = true }
+libsecp256k1 = { workspace = true }
+memoffset = { workspace = true }
+rand0-7 = { package = "rand", version = "0.7" }
+rand_chacha = { workspace = true }
+bovey-accounts-db = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-builtins = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-loader-v3-interface = { workspace = true }
+bovey-logger = { workspace = true }
+# See order-crates-for-publishing.py for using this unusual `path = "."`
+bovey-runtime = { path = ".", features = ["dev-context-only-utils"] }
+bovey-runtime-transaction = { workspace = true, features = [
+    "dev-context-only-utils",
+] }
+bovey-sdk = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-sdk-ids = { workspace = true }
+bovey-vm = { workspace = true, features = ["dev-context-only-utils"] }
+static_assertions = { workspace = true }
+test-case = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dev-context-only-utils = [
+    "dep:ocp-system-program",
+    "bovey-vm/dev-context-only-utils",
+    "bovey-runtime-transaction/dev-context-only-utils",
+]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-accounts-db/frozen-abi",
+    "bovey-compute-budget/frozen-abi",
+    "bovey-cost-model/frozen-abi",
+    "bovey-perf/frozen-abi",
+    "bovey-program-runtime/frozen-abi",
+    "bovey-sdk/frozen-abi",
+    "bovey-vm/frozen-abi",
+    "bovey-version/frozen-abi",
+    "bovey-vote/frozen-abi",
+    "ocp-vote-program/frozen-abi",
+]
+
+[lints]
+workspace = true

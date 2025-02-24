@@ -1,0 +1,92 @@
+[package]
+name = "bovey-cost-model"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+ahash = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true }
+bovey-bincode = { workspace = true }
+bovey-borsh = { workspace = true }
+bovey-builtins-default-costs = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-compute-budget-instruction = { workspace = true }
+bovey-compute-budget-interface = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-fee-structure = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-hash = { workspace = true, optional = true }
+bovey-message = { workspace = true, optional = true }
+bovey-metrics = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-runtime-transaction = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-signature = { workspace = true, optional = true }
+bovey-vm-transaction = { workspace = true }
+bovey-system-interface = { workspace = true }
+bovey-transaction = { workspace = true, optional = true }
+bovey-transaction-error = { workspace = true }
+bovey-vote = { workspace = true }
+ocp-vote-program = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_cost_model"
+
+[dev-dependencies]
+itertools = { workspace = true }
+rand = "0.8.5"
+# See order-crates-for-publishing.py for using this unusual `path = "."`
+bovey-compute-budget-instruction = { workspace = true, features = [
+    "dev-context-only-utils",
+] }
+bovey-compute-budget-interface = { workspace = true }
+ocp-compute-budget-program = { workspace = true }
+bovey-cost-model = { path = ".", features = ["dev-context-only-utils"] }
+bovey-instruction = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-pubkey = { workspace = true, features = ["rand"] }
+bovey-reserved-account-keys = { workspace = true }
+bovey-runtime-transaction = { workspace = true, features = [
+    "dev-context-only-utils",
+] }
+bovey-signer = { workspace = true }
+ocp-system-program = { workspace = true }
+bovey-system-transaction = { workspace = true }
+static_assertions = { workspace = true }
+test-case = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dev-context-only-utils = [
+    "dep:bovey-hash",
+    "dep:bovey-message",
+    "dep:bovey-signature",
+    "dep:bovey-transaction",
+    "bovey-compute-budget-interface/dev-context-only-utils"
+]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-compute-budget/frozen-abi",
+    "bovey-pubkey/frozen-abi",
+    "ocp-vote-program/frozen-abi"
+]
+
+[lints]
+workspace = true

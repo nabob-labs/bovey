@@ -1,0 +1,39 @@
+[package]
+name = "ocp-token-metadata-interface"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[features]
+serde-traits = ["dep:serde", "ocp-pod/serde-traits"]
+
+[dependencies]
+borsh = "1.5.3"
+num-derive = "0.4"
+num-traits = "0.2"
+serde = { version = "1.0.216", optional = true }
+bovey-borsh = { workspace = true }
+bovey-decode-error = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-msg = { workspace = true }
+bovey-program-error = { workspace = true }
+ocp-discriminator = { workspace = true }
+bovey-pubkey = { workspace = true }
+ocp-type-length-value = { workspace = true }
+ocp-pod = { workspace = true, features = [
+    "borsh",
+] }
+thiserror = "2.0"
+
+[dev-dependencies]
+serde_json = "1.0.133"
+bovey-sha256-hasher = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

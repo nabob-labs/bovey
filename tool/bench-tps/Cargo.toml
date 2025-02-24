@@ -1,0 +1,61 @@
+[package]
+name = "bovey-bench-tps"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+chrono = { workspace = true }
+clap = { workspace = true }
+crossbeam-channel = { workspace = true }
+csv = { workspace = true }
+log = { workspace = true }
+rand = { workspace = true }
+rayon = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+bovey-clap-utils = { workspace = true }
+bovey-cli-config = { workspace = true }
+bovey-client = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-core = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-faucet = { workspace = true }
+bovey-genesis = { workspace = true }
+bovey-gossip = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-quic-client = { workspace = true }
+bovey-rpc = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-rpc-client-nonce-utils = { workspace = true }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-sdk = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-tps-client = { workspace = true }
+bovey-tpu-client = { workspace = true }
+bovey-transaction-status = { workspace = true }
+bovey-version = { workspace = true }
+ocp-instruction-padding = { workspace = true, features = ["no-entrypoint"] }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+serial_test = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-local-cluster = { workspace = true }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-test-validator = { workspace = true }
+bovey-tps-client = { workspace = true, features = ["bank-client"] }
+tempfile = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dev-context-only-utils = []

@@ -1,0 +1,59 @@
+[package]
+name = "bovey-vote"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+itertools = { workspace = true }
+log = { workspace = true }
+rand = { workspace = true, optional = true }
+serde = { workspace = true, features = ["rc"] }
+serde_derive = { workspace = true }
+bovey-account = { workspace = true, features = ["bincode"] }
+bovey-bincode = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-packet = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-signature = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-vm-transaction = { workspace = true }
+bovey-transaction = { workspace = true, features = ["bincode"] }
+bovey-vote-interface = { workspace = true, features = ["bincode"] }
+thiserror = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_vote"
+
+[dev-dependencies]
+bincode = { workspace = true }
+rand = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-sha256-hasher = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-transaction = { workspace = true, features = ["bincode"] }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dev-context-only-utils = ["dep:rand"]
+frozen-abi = ["dep:bovey-frozen-abi", "dep:bovey-frozen-abi-macro"]
+
+[lints]
+workspace = true

@@ -1,0 +1,82 @@
+[package]
+name = "bovey-program-runtime"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+base64 = { workspace = true }
+bincode = { workspace = true }
+enum-iterator = { workspace = true }
+itertools = { workspace = true }
+log = { workspace = true }
+percentage = { workspace = true }
+rand = { workspace = true }
+serde = { workspace = true }
+bovey-account = { workspace = true, features = ["bincode"] }
+bovey-clock = { workspace = true }
+bovey-compute-budget = { workspace = true }
+bovey-epoch-rewards = { workspace = true }
+bovey-epoch-schedule = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-frozen-abi-macro = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+bovey-hash = { workspace = true }
+bovey-instruction = { workspace = true }
+bovey-last-restart-slot = { workspace = true }
+bovey-log-collector = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true, optional = true }
+bovey-precompiles = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-rent = { workspace = true }
+bovey-bpf = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+bovey-slot-hashes = { workspace = true }
+bovey-stable-layout = { workspace = true }
+bovey-sysvar = { workspace = true }
+bovey-sysvar-id = { workspace = true }
+bovey-timings = { workspace = true }
+bovey-transaction-context = { workspace = true }
+bovey-type-overrides = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+bovey-compute-budget = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-instruction = { workspace = true, features = ["bincode"] }
+bovey-pubkey = { workspace = true, features = ["rand"] }
+bovey-transaction-context = { workspace = true, features = [
+    "dev-context-only-utils",
+] }
+test-case = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_program_runtime"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+dummy-for-ci-check = ["metrics"]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "dep:bovey-frozen-abi-macro",
+    "bovey-compute-budget/frozen-abi",
+]
+metrics = ["dep:bovey-metrics"]
+shuttle-test = [
+    "bovey-type-overrides/shuttle-test",
+    "bovey-bpf/shuttle-test",
+]
+
+[lints]
+workspace = true

@@ -1,0 +1,10 @@
+[package]
+name = "test_utils"
+version = "0.10.0"
+authors = ["Bovey Maintainers <maintainers@bovey.com>"]
+edition = "2018"
+publish = false
+
+[dependencies]
+libc = "0.2"
+bovey-bpf = { path = "../" }

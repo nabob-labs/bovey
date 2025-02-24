@@ -1,0 +1,52 @@
+[package]
+name = "bovey-builtins-default-costs"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+ahash = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true }
+qualifier_attr = { workspace = true }
+ocp-address-lookup-table-program = { workspace = true }
+ocp-bpf-loader-program = { workspace = true, features = ["vm-internal"] }
+ocp-compute-budget-program = { workspace = true, features = ["vm-internal"] }
+ocp-config-program = { workspace = true }
+bovey-feature-set = { workspace = true }
+bovey-frozen-abi = { workspace = true, optional = true, features = [
+    "frozen-abi",
+] }
+ocp-loader-v4-program = { workspace = true, features = ["vm-internal"] }
+bovey-pubkey = { workspace = true }
+bovey-sdk-ids = { workspace = true }
+ocp-stake-program = { workspace = true }
+ocp-system-program = { workspace = true }
+ocp-vote-program = { workspace = true }
+# Add additional builtin programs here
+
+[lib]
+crate-type = ["lib"]
+name = "bovey_builtins_default_costs"
+
+[dev-dependencies]
+rand = "0.8.5"
+bovey-builtins-default-costs = { path = ".", features = ["vm-internal"] }
+static_assertions = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[features]
+frozen-abi = [
+    "dep:bovey-frozen-abi",
+    "ocp-vote-program/frozen-abi",
+]
+dev-context-only-utils = []
+vm-internal = []
+
+[lints]
+workspace = true

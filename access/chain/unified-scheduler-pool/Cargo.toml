@@ -1,0 +1,48 @@
+[package]
+name = "bovey-unified-scheduler-pool"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bovey-banking-stage-ingress-types = { workspace = true }
+aquamarine = { workspace = true }
+assert_matches = { workspace = true }
+crossbeam-channel = { workspace = true }
+dashmap = { workspace = true }
+derive-where = { workspace = true }
+derive_more = { workspace = true }
+dyn-clone = { workspace = true }
+log = { workspace = true }
+qualifier_attr = { workspace = true }
+scopeguard = { workspace = true }
+bovey-ledger = { workspace = true }
+bovey-poh = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-runtime-transaction = { workspace = true }
+bovey-timings = { workspace = true }
+bovey-transaction = { workspace = true }
+bovey-transaction-error = { workspace = true }
+bovey-unified-scheduler-logic = { workspace = true }
+static_assertions = { workspace = true }
+trait-set = { workspace = true }
+vec_extract_if_polyfill = { workspace = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+lazy_static = { workspace = true }
+bovey-clock = { workspace = true }
+bovey-entry = { workspace = true }
+bovey-hash = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-system-transaction = { workspace = true }
+test-case = { workspace = true }
+
+[features]
+dev-context-only-utils = []

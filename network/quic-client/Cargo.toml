@@ -1,0 +1,40 @@
+[package]
+name = "bovey-quic-client"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-lock = { workspace = true }
+async-trait = { workspace = true }
+futures = { workspace = true }
+itertools = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true }
+quinn = { workspace = true }
+quinn-proto = { workspace = true }
+rustls = { workspace = true }
+bovey-connection-cache = { workspace = true }
+bovey-keypair = { workspace = true }
+bovey-measure = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-pubkey = { workspace = true }
+bovey-quic-definitions = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-signer = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-tls-utils = { workspace = true }
+bovey-transaction-error = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+
+[dev-dependencies]
+crossbeam-channel = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-net-utils = { workspace = true, features = ["dev-context-only-utils"] }
+bovey-packet = { workspace = true }
+bovey-perf = { workspace = true }

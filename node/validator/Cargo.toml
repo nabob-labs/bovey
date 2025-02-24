@@ -1,0 +1,86 @@
+[package]
+name = "bovey-validator"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+bovey-geyser-plugin-interface = { workspace = true }
+chrono = { workspace = true, features = ["default", "serde"] }
+clap = { workspace = true }
+console = { workspace = true }
+core_affinity = { workspace = true }
+crossbeam-channel = { workspace = true }
+fd-lock = { workspace = true }
+indicatif = { workspace = true }
+itertools = { workspace = true }
+jsonrpc-core = { workspace = true }
+jsonrpc-core-client = { workspace = true, features = ["ipc"] }
+jsonrpc-derive = { workspace = true }
+jsonrpc-ipc-server = { workspace = true }
+lazy_static = { workspace = true }
+libloading = { workspace = true }
+log = { workspace = true }
+num_cpus = { workspace = true }
+rand = { workspace = true }
+rayon = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+bovey-accounts-db = { workspace = true }
+bovey-clap-utils = { workspace = true }
+bovey-cli-config = { workspace = true }
+bovey-cli-output = { workspace = true }
+bovey-core = { workspace = true }
+bovey-download-utils = { workspace = true }
+bovey-entry = { workspace = true }
+bovey-faucet = { workspace = true }
+bovey-genesis-utils = { workspace = true }
+bovey-geyser-plugin-manager = { workspace = true }
+bovey-gossip = { workspace = true }
+bovey-ledger = { workspace = true }
+bovey-logger = { workspace = true }
+bovey-metrics = { workspace = true }
+bovey-net-utils = { workspace = true }
+bovey-perf = { workspace = true }
+bovey-poh = { workspace = true }
+bovey-program-runtime = { workspace = true }
+bovey-rayon-threadlimit = { workspace = true }
+bovey-rpc = { workspace = true }
+bovey-rpc-client = { workspace = true }
+bovey-rpc-client-api = { workspace = true }
+bovey-runtime = { workspace = true }
+bovey-sdk = { workspace = true, features = ["openssl-vendored"] }
+bovey-send-transaction-service = { workspace = true }
+bovey-storage-bigtable = { workspace = true }
+bovey-streamer = { workspace = true }
+bovey-test-validator = { workspace = true }
+bovey-tpu-client = { workspace = true }
+bovey-unified-scheduler-pool = { workspace = true }
+bovey-version = { workspace = true }
+ocp-vote-program = { workspace = true }
+symlink = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+
+[dev-dependencies]
+assert_cmd = { workspace = true }
+predicates = { workspace = true }
+bovey-account-decoder = { workspace = true }
+bovey-inline-ocp = { workspace = true }
+bovey-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+ocp-token-2022 = { workspace = true, features = ["no-entrypoint"] }
+tempfile = { workspace = true }
+
+[target.'cfg(not(any(target_env = "msvc", target_os = "freebsd")))'.dependencies]
+jemallocator = { workspace = true }
+
+[target."cfg(unix)".dependencies]
+libc = { workspace = true }
+signal-hook = { workspace = true }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
